@@ -15,6 +15,23 @@ body
     z-index: 100;
 }
 
+a
+{
+	color:#5fd0f1;
+}
+
+#title img
+{
+	padding-top:25px;
+	height: 100px;
+}
+
+#title .rightLogo
+{
+	float:right;
+	margin-right:25px;
+}
+
 nav
 {
     position: fixed;
@@ -22,24 +39,31 @@ nav
     left:0px;
     width: 380px;
     height: 100%;
-    padding: 10px;
+    padding: 0px;
     padding-top: 150px;
     background-color: #F1F1F1;
     border-right: 2px solid #2b2b2b;
     z-index: 50;
+    margin:0;
 }
 
 nav .onglet
 {
     position:relative;
-    left: -5px;
-    height: 50px;
+    margin:0;
+    text-align:center;
+    font-size: 22px;
+    height: 45px;
     width: 50%;
     color: #ffffff;
     background-color: #2b2b2b;
+    margin-bottom:20px;
+    padding-top:15px;
+    margin-right:-2px;
+    border-right: 1px solid #fff;
 }
 
-nav .onglet :hover
+nav .onglet:hover
 {
     background-color: #414141;
 }
@@ -57,10 +81,77 @@ nav .onglet :hover
 
 #hamburgerMenu
 {
+	background-color:#fff;
+}
 
+#hamburgerMenu h2
+{
+	font-size:22px;
+	color:#2b2b2b;
+	margin-left:5%;
+	margin-top:5%;
+}
+
+form
+{
+	margin-top:-20px;
+	margin-left:20%;
+	margin-bottom:-20px;
+}
+
+input[type="checkbox"] {
+    display:none;
+}
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background:url(images/check_radio_sheet.png) left top no-repeat;
+    cursor:pointer;
+}
+input[type="checkbox"]:checked + label span {
+    background:url(images/check_radio_sheet.png) -19px top no-repeat;
+}
+
+#AddEvent
+{
+	position:absolute;
+	bottom:150;
+	width:100%;
+	margin:0;
+	margin-top:20px;
+	text-align:center;
+	font-size: 20px;
+	padding-top:15px;
+	height: 40px;
+	width: 100%;
+	color: #ffffff;
+	background-color: #2b2b2b;
+}
+
+#AddEvent:hover
+{
+	color: #2b2b2b;
+	background-color: #40c1e6;
 }
 
 #calendar
 {
+	height:100%;
+	margin:0;
+	margin-left:-10px;
+}
 
+#footer
+{
+	position:absolute;
+	background-color:#f1f1f1;
+	bottom:0px;
+	height:54px;
+	color:#2b2b2B;
+	margin:0;
+	width:100%;
+	border:1px solid #2b2b2b;
 }
