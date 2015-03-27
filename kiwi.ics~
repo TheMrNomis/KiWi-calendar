@@ -1,0 +1,10 @@
+<?php
+#  if(!isset($_POST["y"]))
+#  {
+#    header("Location:.");
+#    exit;
+#  }
+  include("./getEvents.php");
+
+  $events = getEvents();
+?>
