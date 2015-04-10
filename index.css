@@ -1,6 +1,7 @@
 body
 {
-    padding:0px;
+    padding:0px;    
+    overflow:hidden;
 }
 
 #title
@@ -143,11 +144,12 @@ input[type="checkbox"]:checked + label span {
 	height:100%;
 	margin:0;
 	margin-left:-10px;
+	background-color:#f1f1f1;
 }
 
 #footer
 {
-	position:absolute;
+	position:fixed;
 	background-color:#f1f1f1;
 	bottom:0px;
 	height:54px;
@@ -161,14 +163,111 @@ input[type="checkbox"]:checked + label span {
 {
   float: right;
   margin-right:25px;
+  margin-top:-30px;
+}
+
+#exMois
+{
+	margin-top:-10px;
+	height:30px;
+	width:30%;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 #Mois
 {
 	text-align:center;
-	margin-top:10px;
 	font-size: 30px;
-	margin-bottom:-30px;
+	margin-top:-45px;
+}
+
+#exLess
+{
+  width:40px;
+  height:40px;
+  float:right;
+  margin-top:-40px;
+}
+
+#exMore
+{
+  width:40px;
+  height:40px;
+  padding-top:20px;
 }
 
 
+/*Calendar*/
+table
+{
+  width:100%;
+  margin:0;
+  padding:0;
+  border-style:none;
+  table-layout: fixed;
+}
+
+tr
+{
+  height:250px;  
+  border-style:none;
+  margin:0;
+  width:100%;
+  padding:0;
+}
+
+td
+{
+  border-style:none;
+  height:100%;
+  margin:0;
+  padding:0;
+}
+
+td:hover
+{
+    background-color: #40c1e6;
+}
+
+tr #date
+{
+  font-size:30px;
+  margin:20px;
+  color:#2b2b2b;
+}
+
+#calendar #event
+{
+  margin:0;
+  border:1px solid #2b2b2b;
+  height:100%;
+  width:100%;
+}
+
+#link
+{
+  margin-left:10px;
+  font-size:12px;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 1000px) and (max-height: 500px){
+
+#title
+{
+    height: 50px;
+}
+
+#title img
+{
+	padding-top:10px;
+	height: 30px;
+}
+
+}
