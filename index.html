@@ -6,13 +6,6 @@
         <link rel="stylesheet" href="./index.css" />
         <link rel="icon" type="image/png" href="favicon.png" />
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
-        
-        <!--Using jQuery and jQuery UI for display effects-->
-				<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-				<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-		 
-				<!--Using the hamburger menu display code-->
-				<script src="js/hamburger.js"></script>
     </head>
     <body>
         <header id="title">
@@ -74,10 +67,110 @@
                 + Ajouter un Évènement
             </div>
         </nav>
+
+        <div class="items">
+        <div class="item">
+          <button class="cmn-toggle-switch cmn-toggle-switch__rot">
+            <span>toggle menu</span>
+          </button>
+        </div>
+      </div>
+
+
+
+
         <div id="calendar">
+        <table border="1">
+					<tr>
+						<td><div id="event"><div id="date">6</div>
+						<div id="link">Conférence - Sécurité</div></td>
+						<td><div id="event"><div id="date">7</div>
+						</td>
+						<td><div id="event"><div id="date">8</div>
+						</td>
+						<td><div id="event"><div id="date">9</div>
+						<div id="link">Club tricot</div></td>
+						<td><div id="event"><div id="date">10</div>
+						<div id="link">Grosse soirée</div></td>
+						<td><div id="event"><div id="date">11</div>
+						</td>
+						<td><div id="event"><div id="date">12</div>
+						<div id="link">Invasion de kakapos</div></td>
+					</tr>
+					<tr>
+						<td><div id="event"><div id="date">6</div>
+						<div id="link">Conférence - Sécurité</div></td>
+						<td><div id="event"><div id="date">7</div>
+						</td>
+						<td><div id="event"><div id="date">8</div>
+						</td>
+						<td><div id="event"><div id="date">9</div>
+						<div id="link">Club tricot</div></td>
+						<td><div id="event"><div id="date">10</div>
+						<div id="link">Grosse soirée</div></td>
+						<td><div id="event"><div id="date">11</div>
+						</td>
+						<td><div id="event"><div id="date">12</div>
+						<div id="link">Invasion de kakapos</div></td>
+					</tr>
+					<tr>
+						<td><div id="event"><div id="date">6</div>
+						<div id="link">Conférence - Sécurité</div></td>
+						<td><div id="event"><div id="date">7</div>
+						</td>
+						<td><div id="event"><div id="date">8</div>
+						</td>
+						<td><div id="event"><div id="date">9</div>
+						<div id="link">Club tricot</div></td>
+						<td><div id="event"><div id="date">10</div>
+						<div id="link">Grosse soirée</div></td>
+						<td><div id="event"><div id="date">11</div>
+						</td>
+						<td><div id="event"><div id="date">12</div>
+						<div id="link">Invasion de kakapos</div></td>
+					</tr>
+					<tr>
+						<td><div id="event"><div id="date">6</div>
+						<div id="link">Conférence - Sécurité</div></td>
+						<td><div id="event"><div id="date">7</div>
+						</td>
+						<td><div id="event"><div id="date">8</div>
+						</td>
+						<td><div id="event"><div id="date">9</div>
+						<div id="link">Club tricot</div></td>
+						<td><div id="event"><div id="date">10</div>
+						<div id="link">Grosse soirée</div></td>
+						<td><div id="event"><div id="date">11</div>
+						</td>
+						<td><div id="event"><div id="date">12</div>
+						<div id="link">Invasion de kakapos</div></td>
+					</tr>
+					<tr>
+						<td><div id="event"><div id="date">6</div>
+						<div id="link">Conférence - Sécurité</div></td>
+						<td><div id="event"><div id="date">7</div>
+						</td>
+						<td><div id="event"><div id="date">8</div>
+						</td>
+						<td><div id="event"><div id="date">9</div>
+						<div id="link">Club tricot</div></td>
+						<td><div id="event"><div id="date">10</div>
+						<div id="link">Grosse soirée</div></td>
+						<td><div id="event"><div id="date">11</div>
+						</td>
+						<td><div id="event"><div id="date">12</div>
+						<div id="link">Invasion de kakapos</div></td>
+					</tr>
+				</table>
+        
+        
 		      <div id="footer">
 							<div id="TextFooter">
-						  <div id="Mois">Mars 2015</div>
+							<div id="exMois">
+								<a id="ancherMore" href="#More" onclick="alert('Click on More');"><img id="exMore" alt="expand less" src="images/expand_less.png" /></a>
+								<div id="Mois">Mars 2015</div>
+								<a id="ancherLess" href="#Less" onclick="alert('Click on Less');"><img id="exLess" alt="expand more" src="images/expand_more.png" /></a>
+							</div>
 						  <div id="Export">Exporter en <a href="#RSS">RSS</a>, <a href="#iCal">iCal</a>, <a href="#webCal">WebCal</a></div>
 						  </div>
 		      <div>
