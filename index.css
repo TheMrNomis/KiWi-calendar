@@ -18,6 +18,7 @@ body
 a
 {
 	color:#5fd0f1;
+	text-decoration:none;
 }
 
 #title img
@@ -155,3 +156,19 @@ input[type="checkbox"]:checked + label span {
 	width:100%;
 	border:1px solid #2b2b2b;
 }
+
+#Export
+{
+  float: right;
+  margin-right:25px;
+}
+
+#Mois
+{
+	text-align:center;
+	margin-top:10px;
+	font-size: 30px;
+	margin-bottom:-30px;
+}
+
+
