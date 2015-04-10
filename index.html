@@ -6,19 +6,32 @@
         <link rel="stylesheet" href="./index.css" />
         <link rel="icon" type="image/png" href="favicon.png" />
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
+        
+        <!--Using jQuery and jQuery UI for display effects-->
+				<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+				<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		 
+				<!--Using the hamburger menu display code-->
+				<script src="js/hamburger.js"></script>
     </head>
     <body>
         <header id="title">
             <img alt="logo ESIR" src="./images/esir.png" />
             <img class="rightLogo" alt="logo Kiwi" src="./images/KiWiCalendar.png" />
         </header>
+        
+        
         <nav id="hamburgerMenu">
+        <a id="ancherESIR" href="#ESIR" onclick="alert('Click on ESIR');">
             <div class="onglet" id="onglet-esir">
                 Esir
             </div>
+         </a>
+         <a id="ancherRennes" href="#Rennes" onclick="alert('Click on Rennes');">
             <div class="onglet" id="onglet-ext">
                 Rennes
             </div>
+         </a>
             <div id="container">
                 <h2>Conférences, Évènements</h2>
                 	<form name="confs" action="" method="POST">
@@ -63,8 +76,10 @@
         </nav>
         <div id="calendar">
 		      <div id="footer">
-				    <div id="Mois">Mars 2015</div>
-				    <div id="Export">Exporter en <a href="">RSS</a>, <a href="">iCal</a>, <a href="">WebCal</a></div>
+							<div id="TextFooter">
+						  <div id="Mois">Mars 2015</div>
+						  <div id="Export">Exporter en <a href="#RSS">RSS</a>, <a href="#iCal">iCal</a>, <a href="#webCal">WebCal</a></div>
+						  </div>
 		      <div>
         </div>
     </body>
