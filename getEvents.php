@@ -15,7 +15,7 @@
       echo("Impossible d'acceder à la base de donnée");
       die();
     }
-    $stmt = $pdo->prepare("SELECT * FROM events");
+    $stmt = $pdo->prepare("SELECT titre, localisation, dtstart, dtend, description FROM events, categorie WHERE events.categorie = categorie.id");
     $stmt->execute();
     $result = $stmt->fetchAll();
     return $result;

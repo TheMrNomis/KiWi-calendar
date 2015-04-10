@@ -4,8 +4,8 @@
 #    header("Location:.");
 #    exit;
 #  }
-  header('Content-type: text/calendar; charset=utf-8');
-  header('Content-Disposition: inline; filename=kiwicalendar.ics');
+#  header('Content-type: text/calendar; charset=utf-8');
+#  header('Content-Disposition: inline; filename=kiwicalendar.ics');
   include("./getEvents.php");
 
   $icalheader = "BEGIN:VCALENDAR
