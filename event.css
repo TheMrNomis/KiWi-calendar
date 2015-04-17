@@ -1,0 +1,32 @@
+body
+{
+    padding:0px;
+}
+
+#descEvent
+{
+  margin-top: 150px;
+  width:80%;
+  margin-right:auto;
+  margin-left:auto;
+  margin-bottom:70px;
+}
+
+#descEvent h1
+{
+  text-align:center;
+}
+
+#descEvent #description
+{
+  width:60%;
+  text-align:justify;
+}
+
+#descEvent #image
+{
+  float:right;
+  width:20%;
+  margin-right:100px;
+  margin-bottom:-100px;
+}
