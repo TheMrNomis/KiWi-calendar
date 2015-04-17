@@ -1,6 +1,6 @@
 body
 {
-    padding:0px;    
+    padding:0px;
     overflow:hidden;
 }
 
@@ -38,7 +38,7 @@ nav
 {
     position: absolute;
     top:0px;
-    left:0px;
+    left:-382px;
     width: 380px;
     height: 100%;
     padding: 0px;
@@ -47,6 +47,9 @@ nav
     border-right: 2px solid #2b2b2b;
     z-index: 50;
     margin:0;
+
+    transition-property:all;
+    transition-duration:0.4s;
 }
 
 nav .onglet
@@ -209,7 +212,7 @@ table
 
 tr
 {
-  height:250px;  
+  height:250px;
   border-style:none;
   margin:0;
   width:100%;
