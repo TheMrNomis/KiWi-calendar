@@ -57,6 +57,7 @@ nav .onglet:hover
 #hamburgerMenu
 {
 	background-color:#fff;
+	height:100%;
 }
 
 #hamburgerMenu h2
@@ -92,9 +93,8 @@ input[type="checkbox"]:checked + label span {
 
 #AddEvent
 {
-	bottom:70;
 	margin:0;
-	margin-top:20px;
+	margin-top:45px;
 	text-align:center;
 	font-size: 20px;
 	padding-top:15px;
@@ -103,6 +103,11 @@ input[type="checkbox"]:checked + label span {
 	position:absolute;
 	color: #ffffff;
 	background-color: #2b2b2b;
+}
+
+#container
+{
+	margin-top:120px;
 }
 
 #AddEvent:hover
