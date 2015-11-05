@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once('getEvents.php');
+$db = connect();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -81,6 +86,8 @@
             <ul class="week">');
             for($date = strtotime('last monday +'.$week.' weeks'); $date < strtotime('next monday +'.$week.' weeks'); $date = strtotime('+1 day', $date))
             {
+                $events = getEventsByDate($db, $date);
+
                 $class = '';
                 if(date('m', $date) != date('m'))
                     $class .= ' otherMonth';
@@ -91,8 +98,11 @@
                 echo('
                 <li class="day'.$class.'">
                     <h2>'.date("d", $date).'</h2>
-                    <ul>
-                        <li class="calendar-link">10h : Conférence - Domotique</li>
+                    <ul>');
+
+                foreach($events as $event)
+                    echo('<li class="calendar-link">'.$event['titre']."</li>");
+                echo('
                     </ul>
                 </li>');
             }
