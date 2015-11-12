@@ -125,6 +125,7 @@ function getEventsSince($db,$date)
  */
 function getEvents()
 {
+    //FUTURE: delete this function
     $pdo = connect();
     $stmt = $pdo->prepare('SELECT titre, localisation, dtstart, dtend, description, url FROM events, categorie WHERE events.categorie = categorie.id');
     $stmt->execute();
@@ -137,6 +138,7 @@ function getEvents()
  */
 function getEvent($id)
 {
+    //FUTURE: delete this function
     $pdo = connect();
     $stmt = $pdo->prepare('SELECT titre, localisation, dtstart, dtend, description, url FROM events WHERE id = ?');
     $stmt->execute(array($id));
