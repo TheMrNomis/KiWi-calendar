@@ -17,6 +17,11 @@
 ?>
   <head>
     <title>KiWi calendar : <?php echo $event["titre"]; ?></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./event.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
   </head>
   <body>
       <header id="title">
