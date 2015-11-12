@@ -15,7 +15,7 @@ $events = getEventsSince($db, time());
 $eol = "\r\n";
 echo('BEGIN:VCALENDAR'.$eol);
 echo('VERSION:2.0'.$eol);
-echo('PRODID:-//hacksw/handcal//NONSGML v1.0//EN'.$eol);
+echo('PRODID:-//KiWi-Calendar//NONSGML v1.0//EN'.$eol);
 foreach($events as $event)
 {
     echo('BEGIN:VEVENT'.$eol);
