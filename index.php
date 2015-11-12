@@ -110,6 +110,7 @@ else
 
         <div id="calendar">
     <?php
+        //FIXME: events are not displayed on the first day
         $monthDate = strtotime('last monday +'.($weekOffset+3).' weeks');
 
         for($week = $weekOffset; $week < $weekOffset + 5; ++$week)
