@@ -178,6 +178,7 @@ input[type="checkbox"]:checked + label span {
 /*Calendar*/
 #calendar {
     margin-top:60px;
+    overflow-y: auto;
 }
 
 #calendar .week {
@@ -215,9 +216,22 @@ input[type="checkbox"]:checked + label span {
 }
 
 #calendar .week .day h2 {
-    font-size: 30px;
+    font-size: 2em;
     margin: 20px;
     color: #2B2B2B;
+}
+
+#calendar .week .day h2 .minititle {
+    font-size: 0.5em;
+    color: #4B4B4B;
+}
+
+#calendar .week .day h2 .left{
+    margin-right: 0.5em;
+}
+
+#calendar .week .day h2 .right{
+    margin-left: 0.0em;
 }
 
 #calendar .week .otherMonth h2 {
@@ -227,4 +241,9 @@ input[type="checkbox"]:checked + label span {
 #calendar .week .day ul {
     margin-left: -20px;
     font-size:12px;
+}
+
+#calendar .week .day .calendar-link a {
+    color: black;
+    text-decoration: none;
 }
