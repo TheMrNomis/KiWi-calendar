@@ -11,7 +11,7 @@
 
         $db = new MyDB();
         if(!$db) echo $db->lastErrorMsg();
-        $id = 1;
+        $id = $_GET["id"];
         $ret = $db->query('SELECT * FROM events WHERE id="'. $id .'"');
         $event = $ret->fetchArray(SQLITE3_ASSOC);
 ?>
@@ -90,13 +90,14 @@
           map.mapTypes.set("OSM", new google.maps.ImageMapType({
               getTileUrl: function(coord, zoom) {
                   // "Wrap" x (logitude) at 180th meridian properly
-                  // NB: Don't touch coord.x because coord param is by reference, and changing its x property breakes something in Google's lib
+                  // NOTE: Don't touch coord.x because coord param is by reference, and changing its x property breakes something in Google's lib
                   var tilesPerGlobe = 1 << zoom;
                   var x = coord.x % tilesPerGlobe;
                   if (x < 0) {
                       x = tilesPerGlobe+x;
                   }
                   // Wrap y (latitude) in a like manner if you want to enable vertical infinite scroll
+                  //TODO: Change MAP API
 
                   return "http://tile.openstreetmap.org/" + zoom + "/" + x + "/" + coord.y + ".png";
               },
