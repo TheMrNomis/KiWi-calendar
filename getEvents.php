@@ -26,6 +26,53 @@ function connect()
 }
 
 /**
+ * @brief queries all the events from the database
+ * @param $db: the PDO connection to the database
+ * @return a list of all the events in the database
+ */
+function getAllEvents($db)
+{
+    try
+    {
+        $request = $db->prepare('SELECT events.id, events.titre, events.localisation, events.dtstart, events.dtend, events.description FROM events, categorie WHERE events.categorie = categorie.id ');
+        $request->execute(array('date'=>date("Y-m-d",$date)));
+        $result = $request->fetchAll();
+        $request->closeCursor();
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
+/**
+ * @brief queries the database for one particular event
+ * @param $db: the PDO connection to the database
+ * @param $id: the ID of the event to query
+ * @return an array containing the event
+ */
+function getOneEvent($db, $id)
+{
+    try
+    {
+        $request = $db->prepare('SELECT events.id, events.titre, events.localisation, events.dtstart, events.dtend, events.description FROM events, categorie WHERE events.categorie = categorie.id AND events.id = ?');
+        $request->execute(array($id));
+        $result = $request->fetch();
+        $request->closeCursor();
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
+/**
  * @brief queries the database for the events on a certain date
  * @param $db: the PDO connection to the database
  * @param $date: the date to search for
