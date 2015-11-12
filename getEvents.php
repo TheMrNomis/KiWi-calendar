@@ -73,6 +73,9 @@ function getEventsSince($db,$date)
     }
 }
 
+/**
+ * @deprecated
+ */
 function getEvents()
 {
     $pdo = connect();
@@ -82,6 +85,9 @@ function getEvents()
     return $result;
 }
 
+/**
+ * @deprecated
+ */
 function getEvent($id)
 {
     $pdo = connect();
