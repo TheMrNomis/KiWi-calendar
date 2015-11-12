@@ -27,6 +27,11 @@ $months = array(
     12 => "Decembre"
 );
 
+if(isset($_GET['w'])&&is_numeric($_GET['w']))
+    $weekOffset = $_GET['w'];
+else
+    $weekOffset = 0;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -105,11 +110,6 @@ $months = array(
 
         <div id="calendar">
     <?php
-        if(isset($_GET['w'])&&is_numeric($_GET['w']))
-            $weekOffset = $_GET['w'];
-        else
-            $weekOffset = 0;
-
         $monthDate = strtotime('last monday +'.($weekOffset+3).' weeks');
 
         for($week = $weekOffset; $week < $weekOffset + 5; ++$week)
@@ -160,7 +160,7 @@ $months = array(
                                 <div id="Mois"><?php echo($months[date('n',$monthDate)].' '.date('Y',$monthDate)); ?></div>
                                 <a id="ancherLess" href="./index.php?w=<?php echo($weekOffset + 1); ?>"><img id="exLess" alt="expand more" src="images/expand_more.png" /></a>
                             </div>
-                          <div id="Export">Exporter en <a href="#RSS">RSS</a>, <a href="#iCal">iCal</a>, <a href="#webCal">WebCal</a></div>
+                          <div id="Export"><a href="./export.php?w=<?php echo($weekOffset); ?>">Exporter (iCal)</a></div>
                           </div>
               <div>
         </div>
