@@ -1,16 +1,16 @@
 <?php
-//header('Content-type: text/calendar; charset=utf-8');
-//header('Content-Disposition: inline; filename=calendar.ics');
+header('Content-type: text/calendar; charset=utf-8');
+header('Content-Disposition: inline; filename=calendar.ics');
 
 function icaldate($date)
 {
-    $dt = time($date);
-    return gmdate('Ymd',$dt).'T'. gmdate('His',$dt). 'Z';
+    $dt = strtotime($date);
+    return date('Ymd',$dt).'T'. date('His',$dt). 'Z';
 }
 
 include_once('getEvents.php');
 $db = connect();
-$events = getEventsByDate($db, time());
+$events = getEventsSince($db, time());
 
 $eol = "\r\n";
 echo('BEGIN:VCALENDAR'.$eol);
