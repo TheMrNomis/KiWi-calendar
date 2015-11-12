@@ -35,7 +35,7 @@ function getEventsByDate($db, $date)
 {
     try
     {
-        $request = $db->prepare('SELECT * FROM events, categorie WHERE events.categorie = categorie.id AND (dtstart <= :date AND dtend >= :date)');
+        $request = $db->prepare('SELECT events.id, events.titre, events.localisation, events.dtstart, events.dtend, events.description FROM events, categorie WHERE events.categorie = categorie.id AND (dtstart <= :date AND dtend >= :date)');
         $request->execute(array('date'=>date("Y-m-d",$date)));
         $result = $request->fetchAll();
         $request->closeCursor();
