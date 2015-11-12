@@ -35,7 +35,31 @@ function getEventsByDate($db, $date)
 {
     try
     {
-        $request = $db->prepare('SELECT * FROM events, categorie WHERE events.categorie = categorie.id AND dtstart <= :date AND dtend >= :date');
+        $request = $db->prepare('SELECT * FROM events, categorie WHERE events.categorie = categorie.id AND (dtstart <= :date AND dtend >= :date)');
+        $request->execute(array('date'=>date("Y-m-d",$date)));
+        $result = $request->fetchAll();
+        $request->closeCursor();
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
+/**
+ * @brief queries the database for the events after a certain date
+ * @param $db: the PDO connection to the database
+ * @param $date: the date to search for
+ * @return a list of all the events future to $date
+ */
+function getEventsSince($db,$date)
+{
+    try
+    {
+        $request = $db->prepare('SELECT events.id, events.titre, events.localisation, events.dtstart, events.dtend, events.description FROM events, categorie WHERE events.categorie = categorie.id AND (events.dtstart >= :date OR events.dtend >= :date)');
         $request->execute(array('date'=>date("Y-m-d",$date)));
         $result = $request->fetchAll();
         $request->closeCursor();
