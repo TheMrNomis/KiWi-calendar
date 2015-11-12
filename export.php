@@ -30,7 +30,7 @@ foreach($events as $event)
     echo('SUMMARY:'.$event['titre'].$eol);
     echo('DESCRIPTION:'.$event['description'].$eol);
     echo('LOCATION:'.$event['localisation'].$eol);
-    echo('CATEGORIES:'/*TODO*/.$eol);
+    echo('CATEGORIES:'/*TODO: insert category of the event*/.$eol);
     echo('END:VEVENT'.$eol);
 }
 
