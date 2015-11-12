@@ -79,7 +79,7 @@
       });
 
       var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({'address': <?php echo $event["localisation"]; ?>}, function(results, status) {
+      geocoder.geocode({'address': '<?php echo $event["localisation"]; ?>'}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
           resultsMap.setCenter(results[0].geometry.location);
           var marker = new google.maps.Marker({
