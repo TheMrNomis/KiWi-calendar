@@ -25,10 +25,12 @@ foreach($events as $event)
 {
     echo('BEGIN:VEVENT'.$eol);
     echo('UID:' . md5($event['id']) . '@kiwi-calendar'.$eol);
-    echo('DTSTAMP:'.icaldate($event['dtstart']).$eol);
     echo('DTSTART:'.icaldate($event['dtstart']).$eol);
     echo('DTEND:'.icaldate($event['dtend']).$eol);
-    echo('SUMMARY:'.$event['description'].$eol);
+    echo('SUMMARY:'.$event['titre'].$eol);
+    echo('DESCRIPTION:'.$event['description'].$eol);
+    echo('LOCATION:'.$event['localisation'].$eol);
+    echo('CATEGORIES:'/*TODO*/.$eol);
     echo('END:VEVENT'.$eol);
 }
 
