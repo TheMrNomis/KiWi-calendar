@@ -44,7 +44,7 @@
       ?></div>
     <?php
             echo '<div id="lieu">'.$event["localisation"].'</div>';
-            echo '<div id="map"></div>';
+            echo '<div id="map" style="width:100%;height:500px;"></div>';
 
             if(isset($event["urlImage"]) || isset($event["description"]))
             echo '<h2>Description</h2>';
@@ -52,7 +52,6 @@
             echo '<div id="image"><img src="'.$event["urlImage"].'" width="100%"></div>';
             if(isset($event["description"]))
             echo '<div id="description">'.$event["description"].'</div>';
-
 
             if(isset($event["site"]) || isset($event["contact"]))
             echo '<h2>Informations</h2>';
@@ -64,52 +63,48 @@
   </div>
 
   <!-- bring in the google maps library -->
-  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript">
       //Google maps API initialisation
       var element = document.getElementById("map");
 
-      var map = new google.maps.Map(element, {
-          center: new google.maps.LatLng(57, 21),
-          zoom: 3,
-          mapTypeId: "OSM",
-          mapTypeControl: false,
-          streetViewControl: false
-      });
-
       var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({'address': '<?php echo $event["localisation"]; ?>'}, function(results, status) {
-        if (status === google.maps.GeocoderStatus.OK) {
-          map.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
+      var address = "<?php echo $event["localisation"]?>";
+
+      geocoder.geocode( { 'address': address}, function(results, status) {
+
+      if (status == google.maps.GeocoderStatus.OK) {
+          var latitude = results[0].geometry.location.lat();
+          var longitude = results[0].geometry.location.lng();
+          }
+
+          var map = new google.maps.Map(element, {
+              center: new google.maps.LatLng(latitude, longitude),
+              zoom: 15,
+              mapTypeId: "OSM",
+              mapTypeControl: false,
+              streetViewControl: false
           });
-        } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
+
+          //Define OSM map type pointing at the OpenStreetMap tile server
+          map.mapTypes.set("OSM", new google.maps.ImageMapType({
+              getTileUrl: function(coord, zoom) {
+                  // "Wrap" x (logitude) at 180th meridian properly
+                  // NB: Don't touch coord.x because coord param is by reference, and changing its x property breakes something in Google's lib
+                  var tilesPerGlobe = 1 << zoom;
+                  var x = coord.x % tilesPerGlobe;
+                  if (x < 0) {
+                      x = tilesPerGlobe+x;
+                  }
+                  // Wrap y (latitude) in a like manner if you want to enable vertical infinite scroll
+
+                  return "http://tile.openstreetmap.org/" + zoom + "/" + x + "/" + coord.y + ".png";
+              },
+              tileSize: new google.maps.Size(256, 256),
+              name: "OpenStreetMap",
+              maxZoom: 18
+          }));
       });
-
-
-      //Define OSM map type pointing at the OpenStreetMap tile server
-      map.mapTypes.set("OSM", new google.maps.ImageMapType({
-          getTileUrl: function(coord, zoom) {
-              // "Wrap" x (logitude) at 180th meridian properly
-              // NB: Don't touch coord.x because coord param is by reference, and changing its x property breakes something in Google's lib
-              var tilesPerGlobe = 1 << zoom;
-              var x = coord.x % tilesPerGlobe;
-              if (x < 0) {
-                  x = tilesPerGlobe+x;
-              }
-              // Wrap y (latitude) in a like manner if you want to enable vertical infinite scroll
-
-              return "http://tile.openstreetmap.org/" + zoom + "/" + x + "/" + coord.y + ".png";
-          },
-          tileSize: new google.maps.Size(256, 256),
-          name: "OpenStreetMap",
-          maxZoom: 18
-      }));
   </script>
 
   </body>
