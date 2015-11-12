@@ -2,6 +2,31 @@
 session_start();
 include_once('getEvents.php');
 $db = connect();
+
+$days = array(
+    1 => "Lun",
+    2 => "Mar",
+    3 => "Mer",
+    4 => "Jeu",
+    5 => "Ven",
+    6 => "Sam",
+    7 => "Dim"
+);
+$months = array(
+    1 => "Janvier",
+    2 => "Fevrier",
+    3 => "Mars",
+    4 => "Avril",
+    5 => "Mai",
+    6 => "Juin",
+    7 => "Juillet",
+    8 => "Ao&ucirc;t",
+    9 => "Septembre",
+    10 => "Octobre",
+    11 => "Novembre",
+    12 => "Decembre"
+);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,16 +105,26 @@ $db = connect();
 
         <div id="calendar">
     <?php
-        for($week = 0; $week < 5; ++$week)
+        if(isset($_GET['w'])&&is_numeric($_GET['w']))
+            $weekOffset = $_GET['w'];
+        else
+            $weekOffset = 0;
+
+        $monthDate = strtotime('last monday +'.($weekOffset+3).' weeks');
+
+        for($week = $weekOffset; $week < $weekOffset + 5; ++$week)
         {
             echo('
             <ul class="week">');
-            for($date = strtotime('last monday +'.$week.' weeks'); $date < strtotime('next monday +'.$week.' weeks'); $date = strtotime('+1 day', $date))
+            for($date = strtotime('last monday +'.$week.' weeks');
+                $date < strtotime('next monday +'.$week.' weeks');
+                $date = strtotime('+1 day', $date)
+               )
             {
                 $events = getEventsByDate($db, $date);
 
                 $class = '';
-                if(date('m', $date) != date('m'))
+                if(date('m', $date) != date('m', $monthDate))
                     $class .= ' otherMonth';
 
                 if(date('Y-m-d', $date) == date('Y-m-d'))
@@ -97,11 +132,18 @@ $db = connect();
 
                 echo('
                 <li class="day'.$class.'">
-                    <h2>'.date("d", $date).'</h2>
+                    <h2>
+                        <span class="minititle left">'.$days[date("N",$date)].'</span>
+                        '.date("d", $date));
+                if(date('m', $date) != date('m', $monthDate))
+                    echo('
+                        <span class="minititle right">/'.date("m",$date).'</class>');
+                echo('
+                    </h2>
                     <ul>');
 
                 foreach($events as $event)
-                    echo('<li class="calendar-link">'.$event['titre']."</li>");
+                    echo('<li class="calendar-link"><a href="./event.php?id='.$event['id'].'">'.$event['titre']."</a></li>");
                 echo('
                     </ul>
                 </li>');
@@ -114,9 +156,9 @@ $db = connect();
               <div id="footer">
                             <div id="TextFooter">
                             <div id="exMois">
-                                <a id="ancherMore" href="#More" onclick="alert('Click on More');"><img id="exMore" alt="expand less" src="images/expand_less.png" /></a>
-                                <div id="Mois">Mars 2015</div>
-                                <a id="ancherLess" href="#Less" onclick="alert('Click on Less');"><img id="exLess" alt="expand more" src="images/expand_more.png" /></a>
+                                <a id="ancherMore" href="./index.php?w=<?php echo($weekOffset - 1); ?>"><img id="exMore" alt="expand less" src="images/expand_less.png" /></a>
+                                <div id="Mois"><?php echo($months[date('n',$monthDate)].' '.date('Y',$monthDate)); ?></div>
+                                <a id="ancherLess" href="./index.php?w=<?php echo($weekOffset + 1); ?>"><img id="exLess" alt="expand more" src="images/expand_more.png" /></a>
                             </div>
                           <div id="Export">Exporter en <a href="#RSS">RSS</a>, <a href="#iCal">iCal</a>, <a href="#webCal">WebCal</a></div>
                           </div>
