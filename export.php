@@ -2,6 +2,11 @@
 header('Content-type: text/calendar; charset=utf-8');
 header('Content-Disposition: inline; filename=calendar.ics');
 
+if(isset($_GET['w'])&&is_numeric($_GET['w']))
+    $weekOffset = $_GET['w'];
+else
+    $weekOffset = 0;
+
 function icaldate($date)
 {
     $dt = strtotime($date);
@@ -10,7 +15,7 @@ function icaldate($date)
 
 include_once('getEvents.php');
 $db = connect();
-$events = getEventsSince($db, time());
+$events = getEventsSince($db, strtotime('last monday +'.$weekOffset.' weeks'));
 
 $eol = "\r\n";
 echo('BEGIN:VCALENDAR'.$eol);
