@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('getEvents.php');
+include_once('databaseOperations.php');
 $db = connect();
 
 $days = array(
@@ -31,6 +31,8 @@ if(isset($_GET['w'])&&is_numeric($_GET['w']))
     $weekOffset = $_GET['w'];
 else
     $weekOffset = 0;
+
+$categories = getCategories($db);
 
 ?>
 <!DOCTYPE html>
