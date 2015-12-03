@@ -26,6 +26,29 @@ function connect()
 }
 
 /**
+ * @brief queries all the categories from the dabase
+ * @param $db: the PDO connection to the database
+ * @return al list of all the categories (id, name)
+ */
+function getCategories($db)
+{
+    try
+    {
+        $request = $db->prepare('SELECT id, nom_cat, sous_cat FROM categorie ORDER BY sous_cat ASC');
+        $request->execute();
+        $result = $request->fetchAll();
+        $request->closeCursor();
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
+/**
  * @brief queries all the events from the database
  * @param $db: the PDO connection to the database
  * @return a list of all the events in the database
