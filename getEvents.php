@@ -97,6 +97,34 @@ function getEventsByDate($db, $date)
 }
 
 /**
+ * @brief queries the database for the events on a certain date, where the categories are matched
+ * @param $db: the PDO connection to the database
+ * @param $date: the date to search for
+ * @param $categories: an array containing the IDs of the categories
+ * @return a list of all the events of the different categories at the date $date
+ */
+function getEventsByDateAndCategories($db, $date, $categories)
+{
+    try
+    {
+        $request = $db->prepare('SELECT events.id, events.titre, events.localisation, events.dtstart, events.dtend, events.description FROM events, categorie WHERE events.categorie = categorie.id AND (dtstart <= :date AND dtend >= :date) AND events.categorie IN :categories');
+        $request->execute(array(
+                                    'date'=>date("Y-m-d",$date),
+                                    'categories'=>implode(',', array_map('intval', $categories))
+        ));
+        $result = $request->fetchAll();
+        $request->closeCursor();
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
+/**
  * @brief queries the database for the events after a certain date
  * @param $db: the PDO connection to the database
  * @param $date: the date to search for
