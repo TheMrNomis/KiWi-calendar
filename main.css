@@ -17,6 +17,13 @@ body, html {
     z-index: 100;
 }
 
+#OSM
+{
+  background: white;
+  width: 100%;
+  padding: 10px;
+}
+
 a
 {
     color:#5fd0f1;
