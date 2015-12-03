@@ -64,9 +64,6 @@ $categories = getCategories($db);
                 Rennes
             </div>
          </a>
-            <a id="ancherEvent" href="#addEvent" onclick="alert('Ajoute un evenement');"><div class="Button" id="AddEvent">
-                + Ajouter un Évènement
-            </div></a>
             <div id="container">
                 <h2>Conférences, Évènements</h2>
                     <form name="confs" action="" method="POST">
@@ -105,6 +102,10 @@ $categories = getCategories($db);
                                     </div>
                                     </form>
             </div>
+            <!-- //TODO: update to use a button instead of a link -->
+            <a id="ancherEvent" href="#addEvent" onclick="alert('Ajoute un evenement');"><div class="Button" id="AddEvent">
+                + Ajouter un Évènement
+            </div></a>
         </nav>
 
 
