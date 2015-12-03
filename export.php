@@ -13,7 +13,7 @@ function icaldate($date)
     return date('Ymd',$dt).'T'. date('His',$dt). 'Z';
 }
 
-include_once('getEvents.php');
+include_once('databaseOperations.php');
 $db = connect();
 $events = getEventsSince($db, strtotime('last monday +'.$weekOffset.' weeks'));
 

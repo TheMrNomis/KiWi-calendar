@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('getEvents.php');
+include_once('databaseOperations.php');
 $db = connect();
 
 $days = array(
