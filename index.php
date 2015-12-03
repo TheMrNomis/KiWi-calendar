@@ -133,14 +133,15 @@ else
 
                 echo('
                 <li class="day'.$class.'">
+                    <a href="./day.php?date='.$date.'">
                     <h2>
                         <span class="minititle left">'.$days[date("N",$date)].'</span>
                         '.date("d", $date));
                 if(date('m', $date) != date('m', $monthDate))
-                    echo('
-                        <span class="minititle right">/'.date("m",$date).'</class>');
+                    echo('<span class="minititle right">/'.date("m",$date).'</class>');
                 echo('
                     </h2>
+                    </a>
                     <ul>');
 
                 foreach($events as $event)
