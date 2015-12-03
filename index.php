@@ -32,8 +32,6 @@ if(isset($_GET['w'])&&is_numeric($_GET['w']))
 else
     $weekOffset = 0;
 
-$categories = getCategories($db);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,6 +63,40 @@ $categories = getCategories($db);
             </div>
          </a>
             <div id="container">
+                <!-- //TODO: CSS for checkbox -->
+                <form method="post" action="./update-categories.php">
+                    <?php
+                        for($tab = 0; $tab < 2; ++$tab)
+                        {
+                            $sous_categories = getSousCategories($db, $tab);
+                    ?>
+                    <div id="tab<?php echo $tab; ?>" class="tabContent">
+                        <?php
+                            for($sous_cat_it = 0; $sous_cat_it < count($sous_categories); ++$sous_cat_it)
+                            {
+                                $sous_cat_id = $sous_categories[$sous_cat_it]['sous_cat_id'];
+                                $sous_cat_titre = $sous_categories[$sous_cat_it]['sous_cat_titre'];
+                        ?>
+                        <h2><?php echo $sous_cat_titre;?></h2>
+                        <?php
+                                $categories = getCategoriesBySousCategorie($db, $sous_cat_id);
+                                for($cat_it = 0; $cat_it < count($categories); ++$cat_it)
+                                {
+                                    $cat_id = $categories[$cat_it]['cat_id'];
+                                    $cat_titre = $categories[$cat_it]['cat_titre'];
+                        ?>
+                        <input type="checkbox" id="cat_<?php echo $cat_id; ?>" name="cat_<?php echo $cat_id; ?>" />
+                        <label for="cat_<?php echo $cat_id; ?>"><?php echo $cat_titre;?></label><br />
+                        <?php
+                                }
+                            }
+                        ?>
+                    </div>
+                    <?php
+                        }
+                    ?>
+                </form>
+                <!--
                 <h2>Conférences, Évènements</h2>
                     <form name="confs" action="" method="POST">
                                     <div align="left"><br>
@@ -100,7 +132,7 @@ $categories = getCategories($db);
                                             <label for="c12"><span></span>Club rigolo</label><br>
                                         <br>
                                     </div>
-                                    </form>
+                                    </form>-->
             </div>
             <!-- //TODO: update to use a button instead of a link -->
             <a id="ancherEvent" href="#addEvent" onclick="alert('Ajoute un evenement');"><div class="Button" id="AddEvent">
