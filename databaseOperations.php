@@ -188,30 +188,4 @@ function getEventsSince($db,$date)
         die();
     }
 }
-
-/**
- * @deprecated
- */
-function getEvents()
-{
-    //FUTURE: delete this function
-    $pdo = connect();
-    $stmt = $pdo->prepare('SELECT titre, localisation, dtstart, dtend, description, url FROM events, categorie WHERE events.categorie = categorie.id');
-    $stmt->execute();
-    $result = $stmt->fetchAll();
-    return $result;
-}
-
-/**
- * @deprecated
- */
-function getEvent($id)
-{
-    //FUTURE: delete this function
-    $pdo = connect();
-    $stmt = $pdo->prepare('SELECT titre, localisation, dtstart, dtend, description, url FROM events WHERE id = ?');
-    $stmt->execute(array($id));
-    $result = $stmt->fetch();
-    return $result;
-}
 ?>
