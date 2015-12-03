@@ -34,7 +34,7 @@ function getCategories($db)
 {
     try
     {
-        $request = $db->prepare('SELECT id, nom_cat, sous_cat FROM categorie ORDER BY sous_cat ASC');
+        $request = $db->prepare('SELECT * FROM categorie NATURAL JOIN sous_categorie ORDER BY sous_cat_tab ASC, sous_cat_id ASC');
         $request->execute();
         $result = $request->fetchAll();
         $request->closeCursor();
@@ -57,7 +57,7 @@ function getAllEvents($db)
 {
     try
     {
-        $request = $db->prepare('SELECT events.id, events.titre, events.localisation, events.dtstart, events.dtend, events.description FROM events, categorie WHERE events.categorie = categorie.id ');
+        $request = $db->prepare('SELECT * FROM event NATURAL JOIN eventCategorie NATURAL JOIN categorie');
         $request->execute(array('date'=>date("Y-m-d",$date)));
         $result = $request->fetchAll();
         $request->closeCursor();
@@ -81,7 +81,25 @@ function getOneEvent($db, $id)
 {
     try
     {
-        $request = $db->prepare('SELECT events.id, events.titre, events.localisation, events.dtstart, events.dtend, events.description FROM events, categorie WHERE events.categorie = categorie.id AND events.id = ?');
+        $request = $db->prepare('SELECT * FROM event WHERE event_id = ?');
+        $request->execute(array($id));
+        $result = $request->fetch();
+        $request->closeCursor();
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
+function getCategoriesForOneEvent($db, $eventId)
+{
+    try
+    {
+        $request = $db->prepare('SELECT * FROM eventCategorie NATURAL JOIN categorie NATURAL JOIN sous_categorie ORDER BY sous_cat_tab ASC, sous_cat_id ASC WHERE event_id = ?');
         $request->execute(array($id));
         $result = $request->fetch();
         $request->closeCursor();
@@ -105,7 +123,7 @@ function getEventsByDate($db, $date)
 {
     try
     {
-        $request = $db->prepare('SELECT events.id, events.titre, events.localisation, events.dtstart, events.dtend, events.description FROM events, categorie WHERE events.categorie = categorie.id AND (dtstart <= :date AND dtend >= :date)');
+        $request = $db->prepare('SELECT * FROM event WHERE (event_dtstart <= :date AND event_dtend >= :date)');
         $request->execute(array('date'=>date("Y-m-d",$date)));
         $result = $request->fetchAll();
         $request->closeCursor();
@@ -130,7 +148,7 @@ function getEventsByDateAndCategories($db, $date, $categories)
 {
     try
     {
-        $request = $db->prepare('SELECT events.id, events.titre, events.localisation, events.dtstart, events.dtend, events.description FROM events, categorie WHERE events.categorie = categorie.id AND (dtstart <= :date AND dtend >= :date) AND events.categorie IN :categories');
+        $request = $db->prepare('SELECT * FROM event NATURAL JOIN eventCategorie NATURAL JOIN categorie WHERE (dtstart <= :date AND dtend >= :date) AND events.categorie IN (:categories)');
         $request->execute(array(
                                     'date'=>date("Y-m-d",$date),
                                     'categories'=>implode(',', array_map('intval', $categories))
@@ -157,7 +175,7 @@ function getEventsSince($db,$date)
 {
     try
     {
-        $request = $db->prepare('SELECT events.id, events.titre, events.localisation, events.dtstart, events.dtend, events.description FROM events, categorie WHERE events.categorie = categorie.id AND (events.dtstart >= :date OR events.dtend >= :date)');
+        $request = $db->prepare('SELECT * FROM event WHERE (event_dtstart >= :date OR event_dtend >= :date)');
         $request->execute(array('date'=>date("Y-m-d",$date)));
         $result = $request->fetchAll();
         $request->closeCursor();
