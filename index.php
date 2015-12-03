@@ -32,6 +32,8 @@ if(isset($_GET['w'])&&is_numeric($_GET['w']))
 else
     $weekOffset = 0;
 
+$categories = getCategories($db);
+
 ?>
 <!DOCTYPE html>
 <html>
