@@ -49,7 +49,7 @@ $categories = getCategories($db);
         <header id="title">
             <a id="hamburgerButton" href="#"><img alt="menu" src="./images/menu.png" /></a>
             <img alt="logo ESIR" src="./images/esir.png" />
-            <img class="rightLogo" alt="logo Kiwi" src="./images/KiWiCalendar.png" />
+            <a href="./index.php"><img class="rightLogo" alt="logo Kiwi" src="./images/KiWiCalendar.png" /></a>
         </header>
 
 
@@ -136,14 +136,15 @@ $categories = getCategories($db);
 
                 echo('
                 <li class="day'.$class.'">
+                    <a href="./day.php?date='.$date.'">
                     <h2>
                         <span class="minititle left">'.$days[date("N",$date)].'</span>
                         '.date("d", $date));
                 if(date('m', $date) != date('m', $monthDate))
-                    echo('
-                        <span class="minititle right">/'.date("m",$date).'</class>');
+                    echo('<span class="minititle right">/'.date("m",$date).'</class>');
                 echo('
                     </h2>
+                    </a>
                     <ul>');
 
                 foreach($events as $event)

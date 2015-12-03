@@ -11,11 +11,11 @@
     <body>
         <header id="title">
             <img alt="logo ESIR" src="./images/esir.png" />
-            <img class="rightLogo" alt="logo Kiwi" src="./images/KiWiCalendar.png" />
+            <a href="./index.php"><img class="rightLogo" alt="logo Kiwi" src="./images/KiWiCalendar.png" /></a>
         </header>
-        
+
         <div id="descEvent">
-          <h1><?php 
+          <h1><?php
           date_default_timezone_set('America/Los_Angeles');
           $date = $_GET["date"];
           echo date('d M Y',strtotime($date));
@@ -41,7 +41,7 @@
           echo "<div id=\"dateLieu\">".date('H:i',strtotime($row['dtstart']))." - ".date('H:i',strtotime($row['dtend'])).". ".$row['localisation']."</div>\n";
           echo "<div id=\"descfull\">".$row['description'] ."</div>\n<div id=\"More\"><a href=\"\">En savoir +</a></div>\n</div>\n";
    }
-   
+
    $db->close();
 ?>
         </div>
