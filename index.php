@@ -62,6 +62,9 @@ else
                 Rennes
             </div>
          </a>
+            <a id="ancherEvent" href="#addEvent" onclick="alert('Ajoute un evenement');"><div class="Button" id="AddEvent">
+                + Ajouter un Évènement
+            </div></a>
             <div id="container">
                 <!-- //TODO: CSS for checkbox -->
                 <form method="post" action="./update-categories.php">
@@ -134,10 +137,6 @@ else
                                     </div>
                                     </form>-->
             </div>
-            <!-- //TODO: update to use a button instead of a link -->
-            <a id="ancherEvent" href="#addEvent" onclick="alert('Ajoute un evenement');"><div class="Button" id="AddEvent">
-                + Ajouter un Évènement
-            </div></a>
         </nav>
 
 
@@ -168,7 +167,7 @@ else
 
                 echo('
                 <li class="day'.$class.'">
-                    <a href="./day.php?date='.$date.'">
+                    <a href="./day.php?date='.date('Y-m-d', $date) .'">
                     <h2>
                         <span class="minititle left">'.$days[date("N",$date)].'</span>
                         '.date("d", $date));
