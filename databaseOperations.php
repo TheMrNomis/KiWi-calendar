@@ -49,6 +49,54 @@ function getCategories($db)
 }
 
 /**
+ * @brief queries all the sub categories from a certain tab
+ * @param $db: the PDO connection to the database
+ * @param $tab: the ID of the tab
+ * @return a list of the subcategories for $tab
+ */
+function getSousCategories($db, $tab)
+{
+    try
+    {
+        $request = $db->prepare('SELECT * FROM sous_categorie WHERE sous_cat_tab = ? ORDER BY sous_cat_id ASC');
+        $request->execute(array($tab));
+        $result = $request->fetchAll();
+        $request->closeCursor();
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
+/**
+ * @brief queries all the categories from a subcategorie
+ * @param $db: the PDO connection to the database
+ * @param $sous_cat_id: the ID of the subcategorie
+ * @return a list of the categories for the subcategorie
+ */
+function getCategoriesBySousCategorie($db, $sous_cat_id)
+{
+    try
+    {
+        $request = $db->prepare('SELECT * FROM categorie WHERE sous_cat_id = ? ORDER BY cat_id ASC');
+        $request->execute(array($sous_cat_id));
+        $result = $request->fetchAll();
+        $request->closeCursor();
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
+/**
  * @brief queries all the events from the database
  * @param $db: the PDO connection to the database
  * @return a list of all the events in the database
