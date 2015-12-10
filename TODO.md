@@ -1,5 +1,8 @@
 # TODO List
 
+## global
++ use categories
+
 ## Event Page
 
 + Clean code
