@@ -9,6 +9,10 @@
 + Modify map
 + connect function
 
+## day page
++ link to index.php when click on one of the logos
++ "en savoir plus" ne redirige pas vers la page event.php
+
 ## Index Page
 
 + Add event
