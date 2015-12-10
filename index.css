@@ -102,7 +102,7 @@ input[type="checkbox"]:checked + label span {
     height: 1em;
     width: 100%;
     position:absolute;
-    bottom: 1em;
+    bottom: 3.5em;
     color: #ffffff;
     background-color: #2b2b2b;
 }
