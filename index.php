@@ -147,7 +147,7 @@ $categories = getCategories($db);
                     <ul>');
 
                 foreach($events as $event)
-                    echo('<li class="calendar-link"><a href="./event.php?id='.$event['id'].'">'.$event['titre']."</a></li>");
+                    echo('<li class="calendar-link"><a href="./event.php?id='.$event['event_id'].'">'.$event['event_title']."</a></li>");
                 echo('
                     </ul>
                 </li>');
