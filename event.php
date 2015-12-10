@@ -29,7 +29,7 @@
           <a href="./index.php"><img class="rightLogo" alt="logo Kiwi" src="./images/KiWiCalendar.png" /></a>
       </header>
   <div id="descEvent">
-    <h1><?php echo $event["event_title"]; ?></h1>
+    <h1><?php echo $event["event_titre"]; ?></h1>
 
     <h2>Date et lieu</h2>
     <div id="dateheure">
