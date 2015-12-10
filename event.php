@@ -16,7 +16,7 @@ $dtend = strtotime($event['event_dtend']);
 <!DOCTYPE html>
 <html>
     <head>
-        <title>KiWi calendar : <?php echo $event["event_titre"]; ?></title>
+        <title>KiWi calendar : <?php echo $event["event_title"]; ?></title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="./main.css" />
         <link rel="stylesheet" href="./event.css" />
@@ -30,7 +30,7 @@ $dtend = strtotime($event['event_dtend']);
             <a href="./index.php"><img class="rightLogo" alt="logo Kiwi" src="./images/KiWiCalendar.png" /></a>
         </header>
         <div id="descEvent">
-            <h1><?php echo $event["event_titre"]; ?></h1>
+            <h1><?php echo $event["event_title"]; ?></h1>
 
             <h2>Date et lieu</h2>
             <div id="dateheure">
