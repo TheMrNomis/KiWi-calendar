@@ -143,7 +143,7 @@ else
                     <ul>');
 
                 foreach($events as $event)
-                    echo('<li class="calendar-link"><a href="./event.php?id='.$event['event_id'].'">'.$event['event_title']."</a></li>");
+                    echo('<li class="calendar-link"><a href="./event.php?id='.$event['event_id'].'">'.$event['event_titre']."</a></li>");
                 echo('
                     </ul>
                 </li>');

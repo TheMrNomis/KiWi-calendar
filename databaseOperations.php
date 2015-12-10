@@ -164,7 +164,7 @@ function getCategoriesForOneEvent($db, $eventId)
 /**
  * @brief queries the database for the events on a certain date
  * @param $db: the PDO connection to the database
- * @param $date: the date to search for
+ * @param $date: the date to search for (please use strtotime)
  * @return a list of all the events at the date $date
  */
 function getEventsByDate($db, $date)
@@ -172,7 +172,7 @@ function getEventsByDate($db, $date)
     try
     {
         $request = $db->prepare('SELECT * FROM event WHERE (event_dtstart <= :date AND event_dtend >= :date)');
-        $request->execute(array('date'=>date("Y-m-d",strtotime($date))));
+        $request->execute(array('date'=>date("Y-m-d",$date)));
         $result = $request->fetchAll();
         $request->closeCursor();
         return $result;
