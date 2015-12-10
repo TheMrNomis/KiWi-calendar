@@ -9,8 +9,6 @@
 ## Index Page
 
 + Add event
-+ BUG: Show the first day
-+ Connect to day page
 + ENT
 + Sync with others calendars
 
