@@ -66,7 +66,6 @@ else
                 + Ajouter un Évènement
             </div></a>
             <div id="container">
-                <!-- //TODO: CSS for checkbox -->
                 <form method="post" action="./update-categories.php">
                     <?php
                         for($tab = 0; $tab < 2; ++$tab)
