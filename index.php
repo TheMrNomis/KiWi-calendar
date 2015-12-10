@@ -52,89 +52,54 @@ else
 
 
         <nav id="hamburgerMenu">
-        <a id="ancherESIR" href="#">
-            <div class="onglet" id="onglet-esir">
-                Esir
-            </div>
-         </a>
-         <a id="ancherRennes" href="#">
-            <div class="onglet" id="onglet-ext">
-                Rennes
-            </div>
-         </a>
+            <a id="ancherESIR" href="#">
+                <div class="onglet" id="onglet-esir">
+                    Esir
+                </div>
+            </a>
+            <a id="ancherRennes" href="#">
+                <div class="onglet" id="onglet-ext">
+                    Rennes
+                </div>
+            </a>
             <div id="container">
                 <form method="post" action="./update-categories.php">
                     <?php
-                        for($tab = 0; $tab < 2; ++$tab)
-                        {
-                            $sous_categories = getSousCategories($db, $tab);
+                    for($tab = 0; $tab < 2; ++$tab)
+                    {
+                        $sous_categories = getSousCategories($db, $tab);
                     ?>
                     <div id="tab<?php echo $tab; ?>" class="tabContent">
                         <?php
-                            for($sous_cat_it = 0; $sous_cat_it < count($sous_categories); ++$sous_cat_it)
-                            {
-                                $sous_cat_id = $sous_categories[$sous_cat_it]['sous_cat_id'];
-                                $sous_cat_titre = $sous_categories[$sous_cat_it]['sous_cat_titre'];
+                        for($sous_cat_it = 0; $sous_cat_it < count($sous_categories); ++$sous_cat_it)
+                        {
+                            $sous_cat_id = $sous_categories[$sous_cat_it]['sous_cat_id'];
+                            $sous_cat_titre = $sous_categories[$sous_cat_it]['sous_cat_titre'];
                         ?>
                         <h2><?php echo $sous_cat_titre;?></h2>
                         <?php
-                                $categories = getCategoriesBySousCategorie($db, $sous_cat_id);
-                                for($cat_it = 0; $cat_it < count($categories); ++$cat_it)
-                                {
-                                    $cat_id = $categories[$cat_it]['cat_id'];
-                                    $cat_titre = $categories[$cat_it]['cat_titre'];
+                            $categories = getCategoriesBySousCategorie($db, $sous_cat_id);
+                            for($cat_it = 0; $cat_it < count($categories); ++$cat_it)
+                            {
+                                $cat_id = $categories[$cat_it]['cat_id'];
+                                $cat_titre = $categories[$cat_it]['cat_titre'];
                         ?>
                         <input type="checkbox" id="cat_<?php echo $cat_id; ?>" name="cat_<?php echo $cat_id; ?>" />
                         <label for="cat_<?php echo $cat_id; ?>"><span></span><?php echo $cat_titre;?></label><br />
                         <?php
-                                }
                             }
+                        }
                         ?>
                     </div>
                     <?php
-                        }
+                    }
                     ?>
                 </form>
-                <a id="ancherEvent" href="#addEvent" onclick="alert('Ajoute un evenement');"><div class="Button" id="AddEvent">
-                + Ajouter un Évènement
-            </div></a>
-                <!--
-                <h2>Conférences, Évènements</h2>
-                    <form name="confs" action="" method="POST">
-                                    <div align="left"><br>
-                                            <input type="checkbox" id="c1" name="cc" />
-                                            <label for="c1"><span></span>Biomédical</label><br>
-                                            <input type="checkbox" id="c2" name="cc" />
-                                            <label for="c2"><span></span>Domotique</label><br>
-                                            <input type="checkbox" id="c3" name="cc" />
-                                            <label for="c3"><span></span>Informatique</label><br>
-                                            <input type="checkbox" id="c4" name="cc" />
-                                            <label for="c4"><span></span>Matériaux</label><br>
-                                            <input type="checkbox" id="c5" name="cc" />
-                                            <label for="c5"><span></span>Télécommunication</label><br>
-                                            <input type="checkbox" id="c6" name="cc" />
-                                            <label for="c6"><span></span>Divers</label><br>
-                                        <br>
-                                    </div>
-                                    </form>
-                <h2>Clubs, associations</h2>
-                <form name="confs" action="" method="POST">
-                                    <div align="left"><br>
-                                            <input type="checkbox" id="c7" name="cc" />
-                                            <label for="c7"><span></span>Club Framboise</label><br>
-                                            <input type="checkbox" id="c8" name="cc" />
-                                            <label for="c8"><span></span>ESIRDuino</label><br>
-                                            <input type="checkbox" id="c9" name="cc" />
-                                            <label for="c9"><span></span>Club Tricot</label><br>
-                                            <input type="checkbox" id="c10" name="cc" />
-                                            <label for="c10"><span></span>Club Miam</label><br>
-                                            <input type="checkbox" id="c11" name="cc" />
-                                            <label for="c11"><span></span>Les lapins noirs</label><br>
-                                            <input type="checkbox" id="c12" name="cc" />
-                                            <label for="c12"><span></span>Club rigolo</label><br>
-                                        <br>
-                                    </div>
-                                    </form>-->
+                <a id="ancherEvent" href="#addEvent" onclick="alert('Ajoute un evenement');">
+                    <div class="Button" id="AddEvent">
+                        + Ajouter un Évènement
+                    </div>
+                </a>
             </div>
         </nav>
 
@@ -142,63 +107,63 @@ else
 
 
         <div id="calendar">
-    <?php
-        //FIXME: events are not displayed on the first day
-        $monthDate = strtotime('last monday +'.($weekOffset+3).' weeks');
+            <?php
+            //FIXME: events are not displayed on the first day
+            $monthDate = strtotime('last monday +'.($weekOffset+3).' weeks');
 
-        for($week = $weekOffset; $week < $weekOffset + 5; ++$week)
-        {
-            echo('
-            <ul class="week">');
-            for($date = strtotime('last monday +'.$week.' weeks');
-                $date < strtotime('next monday +'.$week.' weeks');
-                $date = strtotime('+1 day', $date)
-               )
+            for($week = $weekOffset; $week < $weekOffset + 5; ++$week)
             {
-                $events = getEventsByDate($db, $date);
-
-                $class = '';
-                if(date('m', $date) != date('m', $monthDate))
-                    $class .= ' otherMonth';
-
-                if(date('Y-m-d', $date) == date('Y-m-d'))
-                    $class .= ' today';
-
                 echo('
+            <ul class="week">');
+                for($date = strtotime('last monday +'.$week.' weeks');
+                    $date < strtotime('next monday +'.$week.' weeks');
+                    $date = strtotime('+1 day', $date)
+                   )
+                {
+                    $events = getEventsByDate($db, $date);
+
+                    $class = '';
+                    if(date('m', $date) != date('m', $monthDate))
+                        $class .= ' otherMonth';
+
+                    if(date('Y-m-d', $date) == date('Y-m-d'))
+                        $class .= ' today';
+
+                    echo('
                 <li class="day'.$class.'">
                     <a href="./day.php?date='.date('Y-m-d', $date) .'">
                     <h2>
                         <span class="minititle left">'.$days[date("N",$date)].'</span>
                         '.date("d", $date));
-                if(date('m', $date) != date('m', $monthDate))
-                    echo('<span class="minititle right">/'.date("m",$date).'</class>');
-                echo('
+                    if(date('m', $date) != date('m', $monthDate))
+                        echo('<span class="minititle right">/'.date("m",$date).'</class>');
+                    echo('
                     </h2>
                     </a>
                     <ul>');
 
-                foreach($events as $event)
-                    echo('<li class="calendar-link"><a href="./event.php?id='.$event['id'].'">'.$event['titre']."</a></li>");
-                echo('
+                    foreach($events as $event)
+                        echo('<li class="calendar-link"><a href="./event.php?id='.$event['id'].'">'.$event['titre']."</a></li>");
+                    echo('
                     </ul>
                 </li>');
-            }
-            echo('
+                }
+                echo('
             </ul>'."\n");
-        }
-    ?>
+            }
+            ?>
 
-              <div id="footer">
-                            <div id="TextFooter">
-                            <div id="exMois">
-                                <a id="ancherMore" href="./index.php?w=<?php echo($weekOffset - 1); ?>"><img id="exMore" alt="expand less" src="images/expand_less.png" /></a>
-                                <div id="Mois"><?php echo($months[date('n',$monthDate)].' '.date('Y',$monthDate)); ?></div>
-                                <a id="ancherLess" href="./index.php?w=<?php echo($weekOffset + 1); ?>"><img id="exLess" alt="expand more" src="images/expand_more.png" /></a>
-                            </div>
-                          <div id="Export"><a href="./export.php?w=<?php echo($weekOffset); ?>">Exporter (iCal)</a></div>
-                          </div>
-              <div>
-        </div>
-        <script src="hamburger.js"></script>
-    </body>
-</html>
+            <div id="footer">
+                <div id="TextFooter">
+                    <div id="exMois">
+                        <a id="ancherMore" href="./index.php?w=<?php echo($weekOffset - 1); ?>"><img id="exMore" alt="expand less" src="images/expand_less.png" /></a>
+                        <div id="Mois"><?php echo($months[date('n',$monthDate)].' '.date('Y',$monthDate)); ?></div>
+                        <a id="ancherLess" href="./index.php?w=<?php echo($weekOffset + 1); ?>"><img id="exLess" alt="expand more" src="images/expand_more.png" /></a>
+                    </div>
+                    <div id="Export"><a href="./export.php?w=<?php echo($weekOffset); ?>">Exporter (iCal)</a></div>
+                </div>
+                <div>
+                </div>
+                <script src="hamburger.js"></script>
+                </body>
+            </html>
