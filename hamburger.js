@@ -26,3 +26,5 @@ buttonRennes.addEventListener('click', function () {
     tab0.style.display = 'none';
     tab1.style.display = 'block';
 }, false);
+
+tab1.style.display = 'none';
