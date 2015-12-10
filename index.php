@@ -62,9 +62,6 @@ else
                 Rennes
             </div>
          </a>
-            <a id="ancherEvent" href="#addEvent" onclick="alert('Ajoute un evenement');"><div class="Button" id="AddEvent">
-                + Ajouter un Évènement
-            </div></a>
             <div id="container">
                 <form method="post" action="./update-categories.php">
                     <?php
@@ -98,6 +95,9 @@ else
                         }
                     ?>
                 </form>
+                <a id="ancherEvent" href="#addEvent" onclick="alert('Ajoute un evenement');"><div class="Button" id="AddEvent">
+                + Ajouter un Évènement
+            </div></a>
                 <!--
                 <h2>Conférences, Évènements</h2>
                     <form name="confs" action="" method="POST">
