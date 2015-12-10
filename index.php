@@ -89,7 +89,7 @@ else
                                     $cat_titre = $categories[$cat_it]['cat_titre'];
                         ?>
                         <input type="checkbox" id="cat_<?php echo $cat_id; ?>" name="cat_<?php echo $cat_id; ?>" />
-                        <label for="cat_<?php echo $cat_id; ?>"><?php echo $cat_titre;?></label><br />
+                        <label for="cat_<?php echo $cat_id; ?>"><span></span><?php echo $cat_titre;?></label><br />
                         <?php
                                 }
                             }
