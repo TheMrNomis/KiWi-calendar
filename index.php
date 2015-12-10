@@ -1,31 +1,8 @@
 <?php
 session_start();
 include_once('databaseOperations.php');
+include_once('datetimeOperations.php');
 $db = connect();
-
-$days = array(
-    1 => "Lun",
-    2 => "Mar",
-    3 => "Mer",
-    4 => "Jeu",
-    5 => "Ven",
-    6 => "Sam",
-    7 => "Dim"
-);
-$months = array(
-    1 => "Janvier",
-    2 => "Fevrier",
-    3 => "Mars",
-    4 => "Avril",
-    5 => "Mai",
-    6 => "Juin",
-    7 => "Juillet",
-    8 => "Ao&ucirc;t",
-    9 => "Septembre",
-    10 => "Octobre",
-    11 => "Novembre",
-    12 => "Decembre"
-);
 
 if(isset($_GET['w'])&&is_numeric($_GET['w']))
     $weekOffset = $_GET['w'];

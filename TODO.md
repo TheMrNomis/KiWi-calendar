@@ -1,5 +1,8 @@
 # TODO List
 
+## global
++ use categories
+
 ## Event Page
 
 + Clean code
@@ -9,8 +12,6 @@
 ## Index Page
 
 + Add event
-+ BUG: Show the first day
-+ Connect to day page
 + ENT
 + Sync with others calendars
 
