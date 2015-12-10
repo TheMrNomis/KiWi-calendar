@@ -2,7 +2,10 @@
 session_start();
 include_once('databaseOperations.php');
 include_once('datetimeOperations.php');
+include_once('categoriesHandling.php');
 $db = connect();
+
+initCategories($db);
 
 if(isset($_GET['w'])&&is_numeric($_GET['w']))
     $weekOffset = $_GET['w'];
@@ -61,7 +64,7 @@ else
                                 $cat_id = $categories[$cat_it]['cat_id'];
                                 $cat_title = $categories[$cat_it]['cat_title'];
                         ?>
-                        <input type="checkbox" id="cat_<?php echo $cat_id; ?>" name="cat_<?php echo $cat_id; ?>" />
+                        <input type="checkbox" id="cat_<?php echo $cat_id; ?>" name="cat_<?php echo $cat_id; ?>" <?php if($_SESSION['categorieStatus'][$cat_id]) echo 'checked'; ?> />
                         <label for="cat_<?php echo $cat_id; ?>"><span></span><?php echo $cat_title;?></label><br />
                         <?php
                             }
@@ -71,6 +74,7 @@ else
                     <?php
                     }
                     ?>
+                    <input type="submit" id="change" value="sauvegarder cat&eacute;gories" />
                 </form>
                 <a id="ancherEvent" href="./addEvent.php">
                     <div class="Button" id="AddEvent">
