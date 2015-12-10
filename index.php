@@ -95,7 +95,7 @@ else
                     }
                     ?>
                 </form>
-                <a id="ancherEvent" href="#addEvent" onclick="alert('Ajoute un evenement');">
+                <a id="ancherEvent" href="./addEvent.php">
                     <div class="Button" id="AddEvent">
                         + Ajouter un Évènement
                     </div>
