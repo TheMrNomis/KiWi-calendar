@@ -52,12 +52,12 @@ else
 
 
         <nav id="hamburgerMenu">
-        <a id="ancherESIR" href="#ESIR" onclick="alert('Click on ESIR');">
+        <a id="ancherESIR" href="#">
             <div class="onglet" id="onglet-esir">
                 Esir
             </div>
          </a>
-         <a id="ancherRennes" href="#Rennes" onclick="alert('Click on Rennes');">
+         <a id="ancherRennes" href="#">
             <div class="onglet" id="onglet-ext">
                 Rennes
             </div>
