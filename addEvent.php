@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" media="screen"
            href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
         <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="stylesheet" href="./addEvent.css" />
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
     </head>
     <body>
@@ -20,14 +21,14 @@
         <div id="descEvent">
               <h1>Ajouter un Évènement</h1>
 
-              <form name="eventForm">
-             Titre de l'évènement :<br>
+              <form id="eventForm" name="eventForm">
+             <div id="left">Titre :</div>
              <input type="text" name="title">
              <br>
-             Adresse du lieu :<br>
+             <div id="left">Adresse :</div>
              <input type="text" name="address">
              <br>
-             Date de début :<br>
+             <div id="left">Date de début :</div>
              <div id="datetimepicker" class="input-append date">
                <input type="text" name="dtstart"></input>
                <span class="add-on">
@@ -35,7 +36,7 @@
                </span>
              </div>
              <br>
-             Date de fin :<br>
+             <div id="left">Date de fin :</div>
              <div id="datetimepicker2" class="input-append date">
                <input type="text" name="dtend"></input>
                <span class="add-on">
@@ -43,20 +44,21 @@
                </span>
              </div>
              <br>
-             Description de l'évènement :<br>
+             <div id="left">Description de l'évènement :</div>
              <textarea name="description" rows="4" cols="50" form="eventForm">
              </textarea>
              <br>
-             Site de l'évènement :<br>
+             <div id="left">Site de l'évènement :</div>
              <input type="url" value="http://" name="site">
              <br>
-             Image de l'évènement :<br>
+             <div id="left">Image de l'évènement :</div>
              <input type="url" value="http://" name="urlImage">
              <br>
-            Contact :<br>
+            <div id="left">Contact :</div>
              <input type="text" name="contact">
+             <br>
+             <div id="buttonDiv"><button id="submit">Ajouter l'évènement !</button></div>
             </form>
-            <button id="submit">Ajouter l'évènement !</button>
 
 
 <script type="text/javascript"
