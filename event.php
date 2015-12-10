@@ -24,7 +24,6 @@ $dtend = strtotime($event['event_dtend']);
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
     </head>
     <body>
-        <!-- <?php print_r($event); ?> -->
         <header id="title">
             <img alt="logo ESIR" src="./images/esir.png" />
             <a href="./index.php"><img class="rightLogo" alt="logo Kiwi" src="./images/KiWiCalendar.png" /></a>
