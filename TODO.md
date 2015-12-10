@@ -5,19 +5,19 @@
 
 ## Event Page
 
-+ Clean code
 + Modify map
 + connect function
 
 ## Index Page
 
-+ Add event
 + ENT
 + Sync with others calendars
 
-## BDD
+## Add Event
 
-+ Event: add image, contact, site
++ Add categories
++ php
++ When the event is added, go to the index page
 
 ## V1
 
