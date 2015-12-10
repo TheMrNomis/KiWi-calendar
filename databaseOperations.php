@@ -172,7 +172,7 @@ function getEventsByDate($db, $date)
     try
     {
         $request = $db->prepare('SELECT * FROM event WHERE (event_dtstart <= :date AND event_dtend >= :date)');
-        $request->execute(array('date'=>date("Y-m-d",$date)));
+        $request->execute(array('date'=>date("Y-m-d",strtotime($date))));
         $result = $request->fetchAll();
         $request->closeCursor();
         return $result;
