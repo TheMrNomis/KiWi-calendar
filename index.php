@@ -51,18 +51,18 @@ else
                         for($sous_cat_it = 0; $sous_cat_it < count($sous_categories); ++$sous_cat_it)
                         {
                             $sous_cat_id = $sous_categories[$sous_cat_it]['sous_cat_id'];
-                            $sous_cat_titre = $sous_categories[$sous_cat_it]['sous_cat_titre'];
+                            $sous_cat_title = $sous_categories[$sous_cat_it]['sous_cat_title'];
                         ?>
-                        <h2><?php echo $sous_cat_titre;?></h2>
+                        <h2><?php echo $sous_cat_title;?></h2>
                         <?php
                             $categories = getCategoriesBySousCategorie($db, $sous_cat_id);
                             for($cat_it = 0; $cat_it < count($categories); ++$cat_it)
                             {
                                 $cat_id = $categories[$cat_it]['cat_id'];
-                                $cat_titre = $categories[$cat_it]['cat_titre'];
+                                $cat_title = $categories[$cat_it]['cat_title'];
                         ?>
                         <input type="checkbox" id="cat_<?php echo $cat_id; ?>" name="cat_<?php echo $cat_id; ?>" />
-                        <label for="cat_<?php echo $cat_id; ?>"><span></span><?php echo $cat_titre;?></label><br />
+                        <label for="cat_<?php echo $cat_id; ?>"><span></span><?php echo $cat_title;?></label><br />
                         <?php
                             }
                         }

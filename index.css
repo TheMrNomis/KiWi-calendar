@@ -94,13 +94,15 @@ input[type="checkbox"]:checked + label span {
 #AddEvent
 {
     margin:0;
-    margin-top:45px;
+/*    margin-top:45px;*/
     text-align:center;
     font-size: 20px;
-    padding-top:15px;
-    height: 40px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    height: 1em;
     width: 100%;
     position:absolute;
+    bottom: 1em;
     color: #ffffff;
     background-color: #2b2b2b;
 }
