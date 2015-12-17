@@ -1,4 +1,12 @@
 <?php
+/** /
+require_once('./CAS-1.3.4/CAS.php');
+phpCAS::client(CAS_VERSION_2_0, 'sso-cas.univ-rennes1.fr', 443, '', false);
+phpCAS::setNoCasServerValidation();
+phpCAS::forceAuthentication();
+$uid = phpCAS::getUser();
+/**/
+
 include_once('databaseOperations.php');
 include('datetimeOperations.php');
 $db = connect();
@@ -19,10 +27,7 @@ $db = connect();
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
     </head>
     <body>
-        <header id="title">
-            <img alt="logo ESIR" src="./images/esir.png" />
-            <a href="./index.php"><img class="rightLogo" alt="logo Kiwi" src="./images/KiWiCalendar.png" /></a>
-        </header>
+        <?php include('header.php'); ?>
 
         <div id="descEvent">
               <h1>Ajouter un Évènement</h1>
@@ -82,11 +87,11 @@ $db = connect();
 <script type="text/javascript">
   $('#datetimepicker').datetimepicker({
     format: 'dd/MM/yyyy hh:mm:ss',
-    language: 'pt-BR'
+    language: 'fr_FR'
   });
     $('#datetimepicker2').datetimepicker({
       format: 'dd/MM/yyyy hh:mm:ss',
-      language: 'pt-BR'
+      language: 'fr_FR'
     });
 </script>
 
