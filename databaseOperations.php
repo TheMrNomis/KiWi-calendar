@@ -253,8 +253,8 @@ function addEvent($db, $titre, $localisation, $dtstart, $dtend, $description, $u
         $request = $db->prepare('INSERT INTO event(event_title, event_localisation, event_dtstart , event_dtend, event_description, event_url, event_urlImage,  event_contact) VALUES(:title, :localisation, :dstart, :dtend, :description, :url, :urlImage, :contact)');
         $request->execute(array('title'=>$titre,
                                 'localisation'=>$localisation,
-                                'dtend'=>date("Y-m-d hh:mm:ss",$dtstart),
-                                'dstart'=>date("Y-m-d hh:mm:ss",$dtend),
+                                'dtend'=>date("Y-m-d H:i:s",$dtstart),
+                                'dstart'=>date("Y-m-d H:i:s",$dtend),
                                 'description'=>$description,
                                 'url'=>$url,
                                 'urlImage'=>$urlImage,
