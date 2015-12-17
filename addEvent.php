@@ -1,4 +1,10 @@
 <?php
+require_once('./CAS-1.3.4/CAS.php');
+phpCAS::client(CAS_VERSION_2_0, 'sso-cas.univ-rennes1.fr', 443, '', false);
+phpCAS::setNoCasServerValidation();
+phpCAS::forceAuthentication();
+$uid = phpCAS::getUser();
+
 include_once('databaseOperations.php');
 include('datetimeOperations.php');
 $db = connect();
