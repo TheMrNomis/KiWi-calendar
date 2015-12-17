@@ -43,7 +43,7 @@ else
                 </div>
             </a>
             <div id="container">
-                <form method="post" action="./update-categories.php">
+                <form method="post" id="form-categories" action="./update-categories.php">
                     <?php
                     for($tab = 0; $tab < 2; ++$tab)
                     {
@@ -64,7 +64,7 @@ else
                                 $cat_id = $categories[$cat_it]['cat_id'];
                                 $cat_title = $categories[$cat_it]['cat_title'];
                         ?>
-                        <input type="checkbox" id="cat_<?php echo $cat_id; ?>" name="cat_<?php echo $cat_id; ?>" <?php if($_SESSION['categorieStatus'][$cat_id]) echo 'checked'; ?> />
+                        <input class="categorie-checkbox" type="checkbox" id="cat_<?php echo $cat_id; ?>" name="cat_<?php echo $cat_id; ?>" <?php if($_SESSION['categorieStatus'][$cat_id]) echo 'checked'; ?> />
                         <label for="cat_<?php echo $cat_id; ?>"><span></span><?php echo $cat_title;?></label><br />
                         <?php
                             }
@@ -145,5 +145,6 @@ else
                 <div>
                 </div>
                 <script src="hamburger.js"></script>
+                <script src="categories.js"></script>
                 </body>
             </html>
