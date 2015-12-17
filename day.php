@@ -27,7 +27,7 @@ $date = strtotime(htmlspecialchars($_GET['date']));
                 echo "<div id=\"event\">\n";
                 echo "<h2>".$row['event_title']."</h2>\n";
                 echo "<div id=\"dateLieu\">".date('H:i',strtotime($row['event_dtstart']))." - ".date('H:i',strtotime($row['event_dtend'])).". ".$row['event_localisation']."</div>\n";
-                echo "<div id=\"descfull\">".$row['event_description'] ."</div>\n<div id=\"More\"><a href=\"\">En savoir +</a></div>\n</div>\n";
+                echo "<div id=\"descfull\">".$row['event_description'] ."</div>\n<div id=\"More\"><a href=\"./event.php?id=".$row['event_id']."\">En savoir +</a></div>\n</div>\n";
             }
             ?>
         </div>
