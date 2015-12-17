@@ -197,10 +197,18 @@ function getEventsByDateAndCategories($db, $date, $categories)
 {
     try
     {
-        $request = $db->prepare('SELECT * FROM event NATURAL JOIN eventCategorie NATURAL JOIN categorie WHERE (dtstart <= :date AND dtend >= :date) AND events.categorie IN (:categories)');
+        $usableCategories = array();
+        foreach($categories as $cat => $useThisCategorie)
+        {
+            if($useThisCategorie)
+                $usableCategories[] = $cat;
+        }
+
+        $request = $db->prepare('SELECT DISTINCT event_id, event_title FROM event NATURAL JOIN eventCategorie WHERE (event_dtstart <= :date_max AND event_dtend >= :date_min) AND cat_id IN (:categories)');
         $request->execute(array(
-                                    'date'=>date("Y-m-d",$date),
-                                    'categories'=>implode(',', array_map('intval', $categories))
+            'date_max'=>date("Y-m-d 23:59:59",$date),
+            'date_min'=>date("Y-m-d 00:00:00", $date),
+            'categories'=>implode(',', array_map('intval', $usableCategories))
         ));
         $result = $request->fetchAll();
         $request->closeCursor();
@@ -251,7 +259,7 @@ function addEvent($db, $titre, $localisation, $dtstart, $dtend, $description, $u
                                 'url'=>$url,
                                 'urlImage'=>$urlImage,
                                 'contact'=>$contact));
-                                    echo("debug");
+        echo("debug");
         $request->closeCursor();
     }
     catch(PDOException $e)

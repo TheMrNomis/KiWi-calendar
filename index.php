@@ -64,7 +64,7 @@ else
                                 $cat_id = $categories[$cat_it]['cat_id'];
                                 $cat_title = $categories[$cat_it]['cat_title'];
                         ?>
-                        <input class="categorie-checkbox" type="checkbox" id="cat_<?php echo $cat_id; ?>" name="cat_<?php echo $cat_id; ?>" <?php if($_SESSION['categorieStatus'][$cat_id]) echo 'checked'; ?> />
+                        <input class="categorie-checkbox" type="checkbox" id="cat_<?php echo $cat_id; ?>" name="cat_<?php echo $cat_id; ?>" <?php if(isset($_SESSION['categorieStatus'][$cat_id]) && $_SESSION['categorieStatus'][$cat_id]) echo 'checked'; ?> />
                         <label for="cat_<?php echo $cat_id; ?>"><span></span><?php echo $cat_title;?></label><br />
                         <?php
                             }
@@ -100,7 +100,7 @@ else
                     $date = strtotime('+1 day', $date)
                    )
                 {
-                    $events = getEventsByDate($db, $date);
+                    $events = getEventsByDateAndCategories($db, $date, $_SESSION['categorieStatus']);
 
                     $class = '';
                     if(date('m', $date) != date('m', $monthDate))
