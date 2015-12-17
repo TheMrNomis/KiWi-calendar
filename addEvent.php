@@ -87,11 +87,11 @@ $db = connect();
 <script type="text/javascript">
   $('#datetimepicker').datetimepicker({
     format: 'dd/MM/yyyy hh:mm:ss',
-    language: 'pt-BR'
+    language: 'fr_FR'
   });
     $('#datetimepicker2').datetimepicker({
       format: 'dd/MM/yyyy hh:mm:ss',
-      language: 'pt-BR'
+      language: 'fr_FR'
     });
 </script>
 
