@@ -34,10 +34,10 @@ $dtend = strtotime($event['event_dtend']);
             </div>
             <?php
             echo '<div id="lieu">'.$event["event_localisation"].'</div>';
-            $url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($event["event_localisation"]).'&key=AIzaSyB8Cd8NP8VOa0wIlvvYGEMZMzCKwROiHxU';
+            $url = 'https://nominatim.openstreetmap.org/search?format=json&q='.urlencode($event["event_localisation"]);
             $obj = json_decode(file_get_contents($url), true);
-            $lat = $obj["results"][0]["geometry"]["location"]["lat"];
-            $lng = $obj["results"][0]["geometry"]["location"]["lng"];
+            $lat = $obj[0]["lat"];
+            $lng = $obj[0]["lon"];
             $urlFrame = 'http://www.openstreetmap.org/export/embed.html?bbox='.$lng.','.$lat.','.$lng.','.$lat.'&layer=mapnik&floor';
             echo '<iframe frameborder="0" scrolling="no"
                   marginheight="0" marginwidth="0"
