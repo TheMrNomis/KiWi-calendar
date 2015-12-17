@@ -2,14 +2,14 @@
 include_once('databaseOperations.php');
 include('datetimeOperations.php');
 $db = connect();
-$titre = $_POST(['title']);
-$localisation = $_POST(['address']);
-$dtstart = $_POST(['dtstart']);
-$dtend = $_POST(['dtend']);
-$description = $_POST(['description']);
-$url = $_POST(['site']);
-$urlImage = $_POST(['urlImage']);
-$contact = $_POST(['contact']);
+$titre = $_POST['title'];
+$localisation = $_POST['address'];
+$dtstart = $_POST['dtstart'];
+$dtend = $_POST['dtend'];
+$description = $_POST['description'];
+$url = $_POST['site'];
+$urlImage = $_POST['urlImage'];
+$contact = $_POST['contact'];
 addEvent($db, $titre, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact);
 ?>
 

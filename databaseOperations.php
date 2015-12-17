@@ -251,6 +251,7 @@ function addEvent($db, $titre, $localisation, $dtstart, $dtend, $description, $u
                                 'url'=>$url,
                                 'urlImage'=>$urlImage,
                                 'contact'=>$contact));
+                                    echo("debug");
         $request->closeCursor();
     }
     catch(PDOException $e)
