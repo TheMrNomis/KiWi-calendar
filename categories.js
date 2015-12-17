@@ -2,12 +2,12 @@ var categories = document.getElementsByClassName("categorie-checkbox");
 
 var form = document.getElementById("form-categories");
 
-for(categorie in categories)
+for(var i = 0; i < categories.length; ++i)
 {
-    categorie.addEventListener('change', function() {
-        //TODO
+    categories[i].addEventListener('change', function() {
         'use strict';
-        alert('OK');
         form.submit();
     }, false);
 }
+
+document.getElementById('change').style.display = 'none';
