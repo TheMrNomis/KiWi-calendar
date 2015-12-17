@@ -32,7 +32,7 @@ function loadCategoriesFromCookie()
         if(is_array($categories))
             for($i = 0; $i < count($categories); ++$i)
                 if(is_bool($categories[$i]))
-                    $_SESSION[$i] = $categories[$i];
+                    $_SESSION['categorieStatus'][$i] = $categories[$i];
     }
 }
 
