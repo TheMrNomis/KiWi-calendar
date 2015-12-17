@@ -1,3 +1,9 @@
+<?php
+include_once('databaseOperations.php');
+include('datetimeOperations.php');
+$db = connect();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,7 +27,7 @@
         <div id="descEvent">
               <h1>Ajouter un Évènement</h1>
 
-              <form id="eventForm" name="eventForm">
+              <form id="eventForm" name="eventForm" method="post" action="eventAdded.php">
              <div id="left">Titre :</div>
              <input type="text" name="title">
              <br>

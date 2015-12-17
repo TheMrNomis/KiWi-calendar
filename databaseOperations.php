@@ -237,4 +237,28 @@ function getEventsSince($db,$date)
         die();
     }
 }
+
+function addEvent($db, $titre, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact)
+{
+    try
+    {
+        $request = $db->prepare('INSERT INTO event(event_title, event_localisation, event_dtstart , event_dtend, event_description, event_url, event_urlImage,  event_contact) VALUES(:title, :localisation, :dstart, :dtend, :description, :url, :urlImage, :contact)');
+        $request->execute(array('title'=>$titre,
+                                'localisation'=>$localisation,
+                                'dtend'=>date("Y-m-d hh:mm:ss",$dtstart),
+                                'dstart'=>date("Y-m-d hh:mm:ss",$dtend),
+                                'description'=>$description,
+                                'url'=>$url,
+                                'urlImage'=>$urlImage,
+                                'contact'=>$contact));
+                                    echo("debug");
+        $request->closeCursor();
+    }
+    catch(PDOException $e)
+    {
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
 ?>
