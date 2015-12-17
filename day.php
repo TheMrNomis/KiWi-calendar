@@ -15,10 +15,7 @@ $date = strtotime(htmlspecialchars($_GET['date']));
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
     </head>
     <body>
-        <header id="title">
-            <img alt="logo ESIR" src="./images/esir.png" />
-            <a href="./index.php"><img class="rightLogo" alt="logo Kiwi" src="./images/KiWiCalendar.png" /></a>
-        </header>
+        <?php include('header.php'); ?>
 
         <div id="descEvent">
             <h1><?php echo date('d M Y', $date); ?></h1>
