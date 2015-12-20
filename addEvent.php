@@ -34,14 +34,14 @@ $db = connect();
 
               <form id="eventForm" name="eventForm" method="post" action="eventAdded.php">
              <div id="left">Titre :</div>
-             <input type="text" name="title">
+             <input type="text" name="title" required>
              <br>
              <div id="left">Adresse :</div>
-             <input type="text" name="address">
+             <input type="text" name="address" required>
              <br>
              <div id="left">Date de début :</div>
              <div id="datetimepicker" class="input-append date">
-               <input type="text" name="dtstart"></input>
+               <input type="text" name="dtstart" required></input>
                <span class="add-on">
                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                </span>
@@ -49,7 +49,7 @@ $db = connect();
              <br>
              <div id="left">Date de fin :</div>
              <div id="datetimepicker2" class="input-append date">
-               <input type="text" name="dtend"></input>
+               <input type="text" name="dtend" required></input>
                <span class="add-on">
                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                </span>
