@@ -45,14 +45,14 @@ $dtend = strtotime($event['event_dtend']);
 
             if(isset($event["event_urlImage"]) || isset($event["event_description"]))
                 echo '<div id="descDiv" style="margin-top:30px;"><h2>Description</h2></div>';
-            if(isset($event["event_urlImage"])  && $event["event_urlImage"] != "http://")
+            if(isset($event["event_urlImage"]))
                 echo '<div id="image"><img src="'.$event["event_urlImage"].'" width="100%"></div>';
             if(isset($event["event_description"]))
                 echo '<div id="description">'.$event["event_description"].'</div>';
 
             if(isset($event["event_site"]) || isset($event["event_contact"]))
                 echo '<h2>Informations</h2>';
-            if(isset($event["event_site"]) && $event["event_site"] != "http://")
+            if(isset($event["event_site"]))
                 echo '<div id="URL">URL : <a href="'.$event["event_site"].'">'.$event["event_site"].'</a></div>';
             if(isset($event["event_contact"]))
                 echo '<div id="Contact">Contact : <a href="mailto:'.$event["event_contact"].'">'.$event["event_contact"].'</a></div>';
