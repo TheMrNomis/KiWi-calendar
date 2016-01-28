@@ -204,11 +204,11 @@ function getEventsByDateAndCategories($db, $date, $categories)
                 $usableCategories[] = $cat;
         }
 
-        $request = $db->prepare('SELECT DISTINCT event_id, event_title FROM event NATURAL JOIN eventCategorie WHERE (event_dtstart <= :date_max AND event_dtend >= :date_min) AND cat_id IN (:categories)');
+        $catStr = implode(',', array_map('intval', $usableCategories));
+        $request = $db->prepare('SELECT DISTINCT event_id, event_title FROM event NATURAL JOIN eventCategorie WHERE (event_dtstart <= :date_max AND event_dtend >= :date_min) AND cat_id IN ('.$catStr.')');
         $request->execute(array(
             'date_max'=>date("Y-m-d 23:59:59",$date),
             'date_min'=>date("Y-m-d 00:00:00", $date),
-            'categories'=>implode(',', array_map('intval', $usableCategories))
         ));
         $result = $request->fetchAll();
         $request->closeCursor();

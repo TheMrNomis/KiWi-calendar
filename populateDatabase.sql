@@ -37,7 +37,7 @@ INSERT INTO eventCategorie(event_id, cat_id) VALUES(2, 2);
 INSERT INTO eventCategorie(event_id, cat_id) VALUES(2, 3);
 INSERT INTO eventCategorie(event_id, cat_id) VALUES(2, 4);
 INSERT INTO eventCategorie(event_id, cat_id) VALUES(2, 5);
-INSERT INTO eventCategorie(event_id, cat_id) VALUES(3, 14);
+INSERT INTO eventCategorie(event_id, cat_id) VALUES(3, 13);
 INSERT INTO eventCategorie(event_id, cat_id) VALUES(4, 6);
 INSERT INTO eventCategorie(event_id, cat_id) VALUES(5, 14);
 INSERT INTO eventCategorie(event_id, cat_id) VALUES(6, 14);
