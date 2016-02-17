@@ -48,6 +48,25 @@ function getCategories($db)
     }
 }
 
+function getCategoriesNames($db)
+{
+    try
+    {
+        $request = $db->prepare('SELECT * FROM categorie');
+        $request->execute();
+        $result = $request->fetchAll();
+        $request->closeCursor();
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
+
 /**
  * @brief queries all the sub categories from a certain tab
  * @param $db: the PDO connection to the database
@@ -246,7 +265,7 @@ function getEventsSince($db,$date)
     }
 }
 
-function addEvent($db, $titre, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact)
+function addEvent($db, $titre, $catArray, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact)
 {
     try
     {
@@ -259,6 +278,7 @@ function addEvent($db, $titre, $localisation, $dtstart, $dtend, $description, $u
                                 'url'=>$url,
                                 'urlImage'=>$urlImage,
                                 'contact'=>$contact));
+        //TODO add this Event to categories. Exemple :     INSERT INTO eventCategorie(event_id, cat_id) VALUES(6, 14);
         $request->closeCursor();
         header("Location:index.php");
         exit;

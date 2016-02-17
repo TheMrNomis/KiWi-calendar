@@ -10,7 +10,8 @@ $description = $_POST['description'];
 $url = $_POST['site'];
 $urlImage = $_POST['urlImage'];
 $contact = $_POST['contact'];
-addEvent($db, $titre, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact);
+$catArray = $_POST['chk_group'];
+addEvent($db, $titre, $catArray, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact);
 ?>
 
 <!DOCTYPE html>

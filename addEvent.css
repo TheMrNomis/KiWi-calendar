@@ -45,3 +45,11 @@ border-radius: 10px; /* future proofing */
 textarea, input {
   width: 80%;
 }
+
+#checkboxGrp {
+  width:80%;
+}
+
+#checkboxGrp input {
+  margin:3px;
+}
