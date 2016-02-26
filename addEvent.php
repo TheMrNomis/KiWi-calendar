@@ -32,20 +32,19 @@ $db = connect();
   <div id="descEvent">
     <h1>Ajouter un Évènement</h1>
 
-    <form id="eventForm" name="eventForm" method="post" action="eventAdded.php">
+    <form id="eventForm" name="eventForm" method="post" action="eventAdded.php" onsubmit="return verifyCheckbox();">
       <div id="left">Titre :</div>
       <input type="text" name="title" required>
       <br>
       <div id="left">Catégories :</div>
       <div id="checkboxGrp">
-      //TODO: make one checkbox required
-      <?php
-      $cats = getCategoriesNames($db);
-      for ($i=0; $i<count($cats); $i++) {
-        echo "<input type=\"checkbox\" name=\"chk_group[]\" value=\"".$cats[$i][0]."\" />".$cats[$i][1]." ";
-      }
-      ?>
-    </div>
+        <?php
+        $cats = getCategoriesNames($db);
+        for ($i=0; $i<count($cats); $i++) {
+          echo "<input type=\"checkbox\" class=\"checkboxRequired\" name=\"chk_group[]\" value=\"".$cats[$i][0]."\" />".$cats[$i][1]." ";
+        }
+        ?>
+      </div>
       <br>
       <div id="left">Adresse :</div>
       <input type="text" name="address" required>
@@ -104,6 +103,16 @@ $db = connect();
       format: 'dd/MM/yyyy hh:mm:ss',
       language: 'fr_FR'
     });
+
+
+    var verifyCheckbox = function () {
+      var checkboxes = $('#checkboxGrp');
+      var inputs = checkboxes.find('input');
+      for(var i = 0; i < inputs.length; i++)
+        if(inputs[i].checked)
+          return true;
+      return false;
+    }
     </script>
 
   </div>
