@@ -13,7 +13,6 @@ $contact = $_POST['contact'];
 $catArray = $_POST['chk_group'];
 addEvent($db, $titre, $catArray, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact);
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>

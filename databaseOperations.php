@@ -269,6 +269,7 @@ function addEvent($db, $titre, $catArray, $localisation, $dtstart, $dtend, $desc
 {
     try
     {
+        $db->beginTransaction();
         $request = $db->prepare('INSERT INTO event(event_title, event_localisation, event_dtstart , event_dtend, event_description, event_url, event_urlImage,  event_contact) VALUES(:title, :localisation, :dstart, :dtend, :description, :url, :urlImage, :contact)');
         $request->execute(array('title'=>$titre,
                                 'localisation'=>$localisation,
@@ -278,13 +279,19 @@ function addEvent($db, $titre, $catArray, $localisation, $dtstart, $dtend, $desc
                                 'url'=>$url,
                                 'urlImage'=>$urlImage,
                                 'contact'=>$contact));
-        //TODO add this Event to categories. Exemple :     INSERT INTO eventCategorie(event_id, cat_id) VALUES(6, 14);
         $request->closeCursor();
-        header("Location:index.php");
-        exit;
+        $newEventId = $db->lastInsertId();
+        $request = $db->prepare('INSERT INTO eventCategorie(event_id, cat_id) VALUES(:eventId, :catId)');
+        foreach($catArray as $cat)
+        {
+            $request->execute(array('eventId'=>$newEventId,
+                                    'catId'=>$cat));
+        }
+        $db->commit();
     }
     catch(PDOException $e)
     {
+        $db->rollBack();
         //NOTE: change $e->getMessage() by an error message before going to production
         echo($e->getMessage());
         die();
