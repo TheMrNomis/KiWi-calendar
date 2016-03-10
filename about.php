@@ -19,17 +19,14 @@
       </p>
 
     <h2>Qui sommes nous ?</h2>
-    <p><b>Sébastien Blin</b><br/>
-      Spécialité Informatique - Systèmes d'Information<br/>
-      <br/>
-      <b>Amaury Louarn</b><br/>
-      Spécialité Informatique - Image Numérique<br/>
-      <br/>
-      <b>Merwan Kaf</b><br/>
-      Spécialité Informatique - Systèmes d'Information<br/>
-      <br/>
-      <b>Paul Perraud </b><br/>
-      Spécialité Ingénierie pour la santé</p>
+      <h3>Sébastien Blin</h3>
+      <p>Sp&eacute;cialit&eacute; Informatique - Syst&egrave;mes d'Information</p>
+      <h3>Merwan Kaf</h3>
+      <p>Sp&eacute;cialit&eacute; Informatique - Syst&egrave;mes d'Information</p>
+      <h3>Amaury Louarn</h3>
+      <p>Sp&eacute;cialit&eacute; Informatique - Imagerie Num&eacute;rique</p>
+      <h3>Paul Perraud</h3>
+      <p>Sp&eacute;cialit&eacute; Ing&eacute;nierie pour la sant&eacute;</p>
 
       <h2>Le projet Kiwi Calendar</h2>
       <p>Nous avons mené ce projet en tant que 4 étudiants de l'ESIR en lien avec le cursus d'Innovation et Politique. L'idée d'un calendrier évènementiel nous est venu à l'esprit en voyant la grande quantité de mails reçus quotidiennement pour informer du déroulement de tel ou tel évènement sur le campus, voire sur Rennes. Nous avons donc décidé de nous lancer dans la réalisation de ce projet lors de notre première année à l'ESIR, courant février 2015.</p>
