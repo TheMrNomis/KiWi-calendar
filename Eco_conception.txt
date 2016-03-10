@@ -1,0 +1,13 @@
+https://checklists.opquast.com/ecoconception-web/
+
+* Valider W3C
+* Ne pas générer de page 404
+* Mettre en cache les objets souvent utilisés en js
+* Images vectorielles
+* Operations primitives 
+* Variables locales
+* Réduire les accès au DOM
+* Utilise Ajax
+* Optimiser au maximum le cache comment les données souvent calculés
+* Utiliser variables statiques au maximum
+* Pas de requêtes SQL a l'interieur d'une boucle
