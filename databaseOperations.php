@@ -347,4 +347,27 @@ function updateEvent($db, $id, $titre, $catArray, $localisation, $dtstart, $dten
         die();
     }
 }
+
+function deleteEvent($db, $id)
+{
+    try
+    {
+        $db->beginTransaction();
+        $request = $db->prepare('DELETE FROM event WHERE event_id=:id');
+        $request->execute(array('id'=>$id));
+        $request->closeCursor();
+        $request = $db->prepare('DELETE FROM eventCategorie WHERE event_id=:id');
+        $request->execute(array('id'=>$id));
+        $request->closeCursor();
+        $db->commit();
+    }
+    catch(PDOException $e)
+    {
+        $db->rollBack();
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
 ?>
