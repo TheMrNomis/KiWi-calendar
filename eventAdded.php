@@ -11,7 +11,10 @@ $url = $_POST['site'];
 $urlImage = $_POST['urlImage'];
 $contact = $_POST['contact'];
 $catArray = $_POST['chk_group'];
+if(!isset($_POST['id'])
 addEvent($db, $titre, $catArray, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact);
+else
+updateEvent($db, $id, $titre, $catArray, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact);
 header('Location:./');
 exit;
 ?>

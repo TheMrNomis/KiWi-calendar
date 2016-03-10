@@ -40,6 +40,7 @@ $event = getOneEvent($db, $id);
     <h1>Modifier un Évènement</h1>
 
     <form id="eventForm" name="eventForm" method="post" action="eventAdded.php" onsubmit="return verifyCheckbox();">
+      <input type="hidden" name="id" value="<?php echo $id; ?>">
       <div id="left">Titre :</div>
       <input type="text" name="title" value="<?php echo $event["event_title"]; ?>" required>
       <br>
@@ -87,7 +88,8 @@ $event = getOneEvent($db, $id);
       <div id="left">Contact :</div>
       <input type="text"  value="<?php echo $event["event_contact"];?>" name="contact">
       <br>
-      <div id="buttonDiv"><button id="submit">Modifier l'évènement !</button></div>
+      <div id="buttonDiv"><button id="submit">Modifier l'évènement !</button>
+      <button id="submit" action="alert('TODO');">Supprimer l'évènement !</button></div>
     </form>
 
 
