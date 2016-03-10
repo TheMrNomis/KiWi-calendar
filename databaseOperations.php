@@ -265,6 +265,19 @@ function getEventsSince($db,$date)
     }
 }
 
+/**
+ * @brief add an event into the database
+ * @param $db: the PDO connection to the database
+ * @param $titre: title of the event
+ * @param $catArray: an array containing the categories related to this event
+ * @param $localisation: localisation of the event
+ * @param $dtstart: datetime of the beginning of the event
+ * @param $dtend: datetime of the end of the event
+ * @param $description: description of the event
+ * @param $url: url of the event
+ * @param $urlImage: url of the image of the event
+ * @param $contact: name of the contact
+ */
 function addEvent($db, $titre, $catArray, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact)
 {
     try
