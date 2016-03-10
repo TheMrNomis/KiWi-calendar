@@ -2,11 +2,11 @@
 include_once('databaseOperations.php');
 include('datetimeOperations.php');
 $db = connect();
-$titre = $_POST['title'];
-$localisation = $_POST['address'];
+$titre = htmlentities($_POST['title']);
+$localisation = htmlentities($_POST['address']);
 $dtstart = strtotime($_POST['dtstart']);
 $dtend = strtotime($_POST['dtend']);
-$description = $_POST['description'];
+$description = htmlentities($_POST['description']);
 $url = $_POST['site'];
 $urlImage = $_POST['urlImage'];
 $contact = $_POST['contact'];
