@@ -12,29 +12,6 @@ $urlImage = $_POST['urlImage'];
 $contact = $_POST['contact'];
 $catArray = $_POST['chk_group'];
 addEvent($db, $titre, $catArray, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact);
+header('Location:./');
+exit;
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Kiwi Calendar : Ajouter un évènement</title>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="./main.css" />
-        <link rel="stylesheet" href="./event.css" />
-        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" media="screen"
-           href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
-        <link rel="icon" type="image/png" href="favicon.png" />
-        <link rel="stylesheet" href="./addEvent.css" />
-        <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
-    </head>
-    <body>
-        <header id="title">
-            <img alt="logo ESIR" src="./images/esir.png" />
-            <a href="./index.php"><img class="rightLogo" alt="logo Kiwi" src="./images/KiWiCalendar.png" /></a>
-        </header>
-
-        <div id="descEvent">
-        Ok !
-        </div>
-    </body>
-</html>
