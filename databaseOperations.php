@@ -166,7 +166,7 @@ function getCategoriesForOneEvent($db, $eventId)
 {
     try
     {
-        $request = $db->prepare('SELECT * FROM eventCategorie NATURAL JOIN categorie NATURAL JOIN sous_categorie WHERE event_id=?');
+        $request = $db->prepare('SELECT cat_title FROM eventCategorie NATURAL JOIN categorie NATURAL JOIN sous_categorie WHERE event_id=?');
         $request->execute(array($id));
         $result = $request->fetch();
         $request->closeCursor();

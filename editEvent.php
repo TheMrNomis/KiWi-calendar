@@ -47,7 +47,7 @@ $event = getOneEvent($db, $id);
       <div id="checkboxGrp">
         <?php
         $cats = getCategoriesNames($db);
-        echo 'TODO!!!'.getCategoriesForOneEvent($db, $id)['cat_title'];
+        echo 'TODO!!!'.gettype(getCategoriesForOneEvent($db, $id));
         for ($i=0; $i<count($cats); $i++) {
           echo "<input type=\"checkbox\" class=\"checkboxRequired\" name=\"chk_group[]\" value=\"".$cats[$i][0]."\" />".$cats[$i][1]." ";
         }
