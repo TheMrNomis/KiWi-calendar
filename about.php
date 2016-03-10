@@ -11,7 +11,12 @@
 <body>
   <?php include('header.php'); ?>
   <div id="descEvent">
-    <h1>À propos</h1>
+    <h1>À propos de KiWi-Calendar</h1>
+
+      <h2>Licence</h2>
+      <p>
+        KiWi-Calendar version <b><?php system("git describe --always"); ?></b> est publié sous licence <a href="http://www.cecill.info/" >CeCILL</a>, dont les termes sont disponibles en version <a href="LICENSE-FR">Fran&ccedil;aise</a> et <a href="LICENSE">Anglaise</a>.
+      </p>
 
     <h2>Qui sommes nous ?</h2>
     <p><b>Sébastien Blin</b><br/>
@@ -25,7 +30,7 @@
       <br/>
       <b>Paul Perraud </b><br/>
       Spécialité Ingénierie pour la santé</p>
-      
+
       <h2>Le projet Kiwi Calendar</h2>
       <p>Nous avons mené ce projet en tant que 4 étudiants de l'ESIR en lien avec le cursus d'Innovation et Politique. L'idée d'un calendrier évènementiel nous est venu à l'esprit en voyant la grande quantité de mails reçus quotidiennement pour informer du déroulement de tel ou tel évènement sur le campus, voire sur Rennes. Nous avons donc décidé de nous lancer dans la réalisation de ce projet lors de notre première année à l'ESIR, courant février 2015.</p>
       <h2>Présentation de Kiwi Calendar</h2>
