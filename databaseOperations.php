@@ -310,4 +310,64 @@ function addEvent($db, $titre, $catArray, $localisation, $dtstart, $dtend, $desc
         die();
     }
 }
+
+function updateEvent($db, $id, $titre, $catArray, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact)
+{
+    try
+    {
+        $db->beginTransaction();
+        $request = $db->prepare('UPDATE event SET event_tile=:title, event_localisation=:localisation, event_dtstart=:dstart, event_dtend=:dtend, event_description=:description, event_url=:url, event_urlImage=:urlImage, event_contact=:contact WHERE event_id=:id');
+        $request->execute(array('title'=>$titre,
+                                'localisation'=>$localisation,
+                                'dtend'=>date("Y-m-d H:i:s",$dtstart),
+                                'dstart'=>date("Y-m-d H:i:s",$dtend),
+                                'description'=>$description,
+                                'url'=>$url,
+                                'urlImage'=>$urlImage,
+                                'contact'=>$contact,
+                                'id'=>$id));
+        $request->closeCursor();
+        $request = $db->prepare('DELETE FROM eventCategorie WHERE event_id=:id');
+        $request->execute(array('id'=>$id));
+        $request->closeCursor();
+        $newEventId = $db->lastInsertId();
+        $request = $db->prepare('INSERT INTO eventCategorie(event_id, cat_id) VALUES(:eventId, :catId)');
+        foreach($catArray as $cat)
+        {
+            $request->execute(array('eventId'=>$newEventId,
+                                    'catId'=>$cat));
+        }
+        $db->commit();
+    }
+    catch(PDOException $e)
+    {
+        $db->rollBack();
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
+function deleteEvent($db, $id)
+{
+    try
+    {
+        $db->beginTransaction();
+        $request = $db->prepare('DELETE FROM event WHERE event_id=:id');
+        $request->execute(array('id'=>$id));
+        $request->closeCursor();
+        $request = $db->prepare('DELETE FROM eventCategorie WHERE event_id=:id');
+        $request->execute(array('id'=>$id));
+        $request->closeCursor();
+        $db->commit();
+    }
+    catch(PDOException $e)
+    {
+        $db->rollBack();
+        //NOTE: change $e->getMessage() by an error message before going to production
+        echo($e->getMessage());
+        die();
+    }
+}
+
 ?>
