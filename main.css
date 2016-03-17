@@ -1,10 +1,5 @@
 @import "compass/css3";
 
-body, html {
-    overflow:hidden;
-    background-color:#f1f1f1;
-}
-
 #title
 {
     position: fixed;
