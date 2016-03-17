@@ -317,7 +317,7 @@ function updateEvent($db, $id, $titre, $catArray, $localisation, $dtstart, $dten
     try
     {
         $db->beginTransaction();
-        $request = $db->prepare('UPDATE event SET event_tile=:title, event_localisation=:localisation, event_dtstart=:dstart, event_dtend=:dtend, event_description=:description, event_url=:url, event_urlImage=:urlImage, event_contact=:contact WHERE event_id=:id');
+        $request = $db->prepare('UPDATE event SET event_title=:title, event_localisation=:localisation, event_dtstart=:dstart, event_dtend=:dtend, event_description=:description, event_url=:url, event_urlImage=:urlImage, event_contact=:contact WHERE event_id=:id');
         $request->execute(array('title'=>$titre,
                                 'localisation'=>$localisation,
                                 'dtend'=>date("Y-m-d H:i:s",$dtstart),
