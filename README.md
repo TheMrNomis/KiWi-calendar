@@ -2,7 +2,7 @@
 
 1. [Le projet](#Le-projet)
 2. [A quoi ça ressemble ?](#À-quoi-%C3%A7a-ressemble-)
-3. [Qui ?](#qui)
+3. [Qui ?](#qui-)
 5. [Licence](#licence)
 
 ## Le projet
