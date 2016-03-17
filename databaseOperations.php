@@ -166,10 +166,11 @@ function getCategoriesForOneEvent($db, $eventId)
 {
     try
     {
-        $request = $db->prepare('SELECT cat_title FROM eventCategorie NATURAL JOIN categorie NATURAL JOIN sous_categorie WHERE event_id=?');
-        $request->execute(array($id));
-        $result = $request->fetch();
+        $request = $db->prepare('SELECT cat_id FROM eventCategorie NATURAL JOIN categorie NATURAL JOIN sous_categorie WHERE event_id=?');
+        $request->execute(array($eventId));
+        $result = $request->fetchAll();
         $request->closeCursor();
+        for($i=0; $i < count($result); $i++) $result[$i] = $result[$i][0];
         return $result;
     }
     catch(PDOException $e)
