@@ -66,8 +66,7 @@ $db = connect();
       </div>
       <br>
       <div id="left">Description de l'évènement :</div>
-      <textarea name="description" rows="4" cols="50" form="eventForm">
-      </textarea>
+      <textarea name="description" rows="4" cols="50" form="eventForm"></textarea>
       <br>
       <div id="left">Site de l'évènement :</div>
       <input type="url" value="http://" name="site">
