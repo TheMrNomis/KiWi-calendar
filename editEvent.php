@@ -77,9 +77,7 @@ $event = getOneEvent($db, $id);
       </div>
       <br>
       <div id="left">Description de l'évènement :</div>
-      <textarea name="description" rows="4" cols="50" form="eventForm">
-<?php echo $event["event_description"];?>
-      </textarea>
+      <textarea name="description" rows="4" cols="50" form="eventForm"><?php echo $event["event_description"];?></textarea>
       <br>
       <div id="left">Site de l'évènement :</div>
       <input type="url" value="<?php echo $event["event_site"];?>"  name="site">
