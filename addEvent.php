@@ -10,12 +10,47 @@ $uid = phpCAS::getUser();
 include_once('databaseOperations.php');
 include('datetimeOperations.php');
 $db = connect();
+
+//TODO: js at least check one categorie to submit form
+
+$edit = (isset($_GET['id']) && is_numeric($_GET['id']));
+
+if(!$edit)
+{
+    $pageTitle = 'Ajouter un évènement';
+    $defaults = array(
+        'titre'=>'',
+        'categories'=>array(),
+        'adresse'=>'ESIR',
+        'debut-jour'=>date('j'),
+        'debut-mois'=>date('n'),
+        'debut-annee'=>date('Y'),
+        'debut-heure'=>date('G'),
+        'debut-minutes'=>'0',
+        'fin-jour'=>date('j'),
+        'fin-mois'=>date('n'),
+        'fin-annee'=>date('Y'),
+        'fin-heure'=>date('G'),
+        'fin-minutes'=>'0',
+        'description'=>'',
+        'site'=>'',
+        'image'=>'',
+        'contact'=>''
+    );
+}
+else
+{
+    $pageTitle = 'Modifier un évènement';
+
+    $id = intval($_GET['id']);
+    $event = getOneEvent($db, $id);
+}
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Kiwi Calendar : Ajouter un évènement</title>
+        <title><?php echo htmlentities('Kiwi Calendar : '.$pageTitle); ?></title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="./main.css" />
         <link rel="stylesheet" href="./event.css" />
@@ -27,11 +62,11 @@ $db = connect();
         <?php include('header.php'); ?>
 
         <div id="descEvent">
-            <h1>Ajouter un Évènement</h1>
+            <h1><?php echo htmlentities($pageTitle); ?></h1>
 
-            <form id="eventForm" name="eventForm" method="post" action="eventAdded.php" onsubmit="return verifyCheckbox();">
+            <form id="eventForm" name="eventForm" method="post" action="eventAdded.php">
                 <div id="left">Titre :</div>
-                <input type="text" name="title" required>
+                    <input type="text" name="title" value="<?php echo $defaults['titre']; ?>" required>
                 <br>
                 <div id="left">Catégories :</div>
                 <div id="checkboxGrp">
@@ -39,9 +74,10 @@ $db = connect();
                     $cats = getCategoriesNames($db);
                     foreach ($cats as $cat)
                     {
+                        //TODO: default checked
 ?>
                     <div class="categorie_grp">
-                        <input type="checkbox" name="checkbox-cat-<?php echo $cat[0]; ?>" id="checkbox-cat-<?php echo $cat[0]; ?>"/>
+                        <input type="checkbox" name="checkbox-cat-<?php echo $cat[0]; ?>" id="checkbox-cat-<?php echo $cat[0]; ?>" <?php echo (in_array($cat[0], $defaults['categories']))? 'checked' : '';?> />
                         <label for="checkbox-cat-<?php echo $cat[0]; ?>"><?php echo htmlentities($cat[1]); ?></label>
                     </div>
 <?php
@@ -65,7 +101,7 @@ $db = connect();
                         for($jour = 1; $jour <= 31; ++$jour)
                         {
 ?>
-                        <option value="<?php echo $jour;?>" <?php echo ($jour == date('j'))? "selected" : '';?>><?php echo $jour; ?></option>
+                        <option value="<?php echo $jour;?>" <?php echo ($jour == $defaults[$idDateType.'-jour'])? "selected" : '';?>><?php echo $jour; ?></option>
 <?php
                         }
 ?>
@@ -77,7 +113,7 @@ $db = connect();
                         {
                             $monthName = DateTime::createFromFormat('!m', $mois)->format('F');
 ?>
-                        <option value="<?php echo $mois;?>" <?php echo ($mois == date('n'))? "selected" : '';?>><?php echo $monthName; ?></option>
+                        <option value="<?php echo $mois;?>" <?php echo ($mois == $defaults[$idDateType.'-mois'])? "selected" : '';?>><?php echo $monthName; ?></option>
 <?php
                         }
 ?>
@@ -90,7 +126,7 @@ $db = connect();
                         {
                             $optionYear = $thisYear + $year;
 ?>
-                        <option value="<?php echo $optionYear;?>" <?php echo ($year == 0)? "selected" : '';?>><?php echo $optionYear; ?></option>
+                        <option value="<?php echo $optionYear;?>" <?php echo ($optionYear == $defaults[$idDateType.'-annee'])? "selected" : '';?>><?php echo $optionYear; ?></option>
 <?php
                         }
 ?>
@@ -101,7 +137,7 @@ $db = connect();
                  for($hour = 0; $hour < 24; ++$hour)
                  {
 ?>
-                    <option value="<?php echo $hour; ?>" <?php echo ($hour == date('G'))? "selected" : '';?>><?php echo $hour; ?></option>
+                    <option value="<?php echo $hour; ?>" <?php echo ($hour == $defaults[$idDateType.'-heure'])? "selected" : '';?>><?php echo $hour; ?></option>
 <?php
                  }
 ?>
@@ -112,7 +148,7 @@ $db = connect();
                  for($minutes = 0; $minutes < 60; $minutes += 15)
                  {
 ?>
-                    <option value="<?php echo $minutes; ?>"><?php echo $minutes; ?></option>
+                    <option value="<?php echo $minutes; ?>" <?php echo ($hour == $defaults[$idDateType.'-minutes'])? "selected" : '';?>><?php echo $minutes; ?></option>
 <?php
                  }
 ?>
@@ -124,17 +160,16 @@ $db = connect();
 ?>
         <br>
         <div id="left">Description de l'évènement :</div>
-        <textarea name="description" rows="4" cols="50" form="eventForm">
-        </textarea>
+        <textarea name="description" rows="4" cols="50" form="eventForm"><?php echo $defaults['description']; ?></textarea>
         <br>
         <div id="left">Site de l'évènement :</div>
-        <input type="url" value="http://" name="site">
+            <input type="url" value="<?php echo $defaults['site']; ?>" name="site" />
         <br>
         <div id="left">Image de l'évènement :</div>
-        <input type="url" value="http://" name="urlImage">
+            <input type="url" value="<?php echo $defaults['image']; ?>" name="urlImage" />
         <br>
         <div id="left">Contact :</div>
-        <input type="text" name="contact">
+            <input type="text" name="contact" value="<?php echo $defaults['contact']; ?>" />
         <br>
         <div id="buttonDiv"><button id="submit">Ajouter l'évènement !</button></div>
         </form>
