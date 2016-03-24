@@ -10,10 +10,11 @@ $localisation = htmlentities($_POST['address']);
 $dtstart = strtotime($_POST['dtstart']);
 $dtend = strtotime($_POST['dtend']);
 $description = htmlentities($_POST['description']);
-$url = $_POST['site'];
-$urlImage = $_POST['urlImage'];
-$contact = $_POST['contact'];
-$catArray = $_POST['chk_group'];
+$url = htmlspecialchars($_POST['site']);
+$urlImage = htmlspecialchars($_POST['urlImage']);
+$contact = htmlspecialchars($_POST['contact']);
+$catArray = htmlspecialchars($_POST['chk_group']);
+
 if(!isset($_POST['id']))
    addEvent($db, $titre, $catArray, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact);
 else
