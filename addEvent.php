@@ -41,7 +41,7 @@ $db = connect();
                     {
 ?>
                     <div class="categorie_grp">
-                        <input type="checkbox" name="categories" id="checkbox-cat-<?php echo $cat[0]; ?>" value="<?php echo $cat[0]; ?>" />
+                        <input type="checkbox" name="checkbox-cat-<?php echo $cat[0]; ?>" id="checkbox-cat-<?php echo $cat[0]; ?>"/>
                         <label for="checkbox-cat-<?php echo $cat[0]; ?>"><?php echo htmlentities($cat[1]); ?></label>
                     </div>
 <?php
