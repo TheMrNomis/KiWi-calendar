@@ -27,7 +27,7 @@ $dtend = strtotime($event['event_dtend']);
   <?php include('header.php'); ?>
   <div id="descEvent">
     <h1><?php echo $event["event_title"]; ?>
-      <a href="<?php echo 'editEvent.php?id='.$_GET['id']; ?>"><img src="images/edit.png"/></a></h1>
+      <a href="<?php echo 'addEvent.php?id='.$_GET['id']; ?>"><img src="images/edit.png"/></a></h1>
 
 
       <h2>Date et lieu</h2>

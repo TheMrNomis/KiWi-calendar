@@ -44,6 +44,29 @@ else
 
     $id = intval($_GET['id']);
     $event = getOneEvent($db, $id);
+
+    $dtstart = $event['dtstart'];
+    $dtend = $event['dtend'];
+
+    $defaults = array(
+        'titre'=>$event['event_title'],
+        'categories'=>array(),
+        'adresse'=>$event["event_localisation"],
+        'debut-jour'=>date('j', $dtstart),
+        'debut-mois'=>date('n', $dtstart),
+        'debut-annee'=>date('Y', $dtstart),
+        'debut-heure'=>date('G', $dtstart),
+        'debut-minutes'=>date('i', $dtstart),
+        'fin-jour'=>date('j', $dtend),
+        'fin-mois'=>date('n', $dtend),
+        'fin-annee'=>date('Y', $dtend),
+        'fin-heure'=>date('G', $dtend),
+        'fin-minutes'=>date('i', $dtend),
+        'description'=>$event["event_description"],
+        'site'=>$event["event_site"],
+        'image'=>$event["event_urlImage"],
+        'contact'=>$event["event_contact"]
+    );
 }
 ?>
 
@@ -65,6 +88,14 @@ else
             <h1><?php echo htmlentities($pageTitle); ?></h1>
 
             <form id="eventForm" name="eventForm" method="post" action="eventAdded.php">
+<?php
+                if($edit)
+                {
+?>
+                <input type="hidden" name="id" value="<?php echo $id; ?>" />
+<?php
+                }
+?>
                 <div id="left">Titre :</div>
                     <input type="text" name="title" value="<?php echo $defaults['titre']; ?>" required>
                 <br>
