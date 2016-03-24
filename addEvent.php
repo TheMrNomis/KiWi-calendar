@@ -44,7 +44,7 @@ $db = connect();
                         <input type="checkbox" name="categories" id="checkbox-cat-<?php echo $cat[0]; ?>" value="<?php echo $cat[0]; ?>" />
                         <label for="checkbox-cat-<?php echo $cat[0]; ?>"><?php echo $cat[1]; ?></label>
                     </div>
-<?
+<?php
                     }
 ?>
                 </div>
@@ -52,21 +52,76 @@ $db = connect();
                 <div id="left">Adresse :</div>
                 <input type="text" name="address" required>
                 <br>
-                <div id="left">Date de début :</div>
-                <div id="datetimepicker" class="input-append date">
-                    <input type="text" name="dtstart" required></input>
-                <span class="add-on">
-                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                </span>
-                </div>
+<?php
+                $dateTypes = array('début', 'fin');
+                foreach($dateTypes as $dateType)
+                {
+                    $idDateType = strtr($dateType, array('é'=>'e'))
+?>
+                <div id="left"><?php echo htmlentities('Date de '.$dateType.' :');?></div>
+                    <label for="<?php echo $idDateType ?>-select-jour"><?php echo htmlentities('Jour :'); ?></label>
+                    <select id="<?php echo $idDateType ?>-select-jour" required>
+<?php
+                        for($jour = 1; $jour <= 31; ++$jour)
+                        {
+?>
+                        <option value="<?php echo $jour;?>"<?php echo ($jour == date('j'))? "selected" : '';?>><?php echo $jour; ?></option>
+<?php
+                        }
+?>
+                    </select>
+                    <label for="<?php echo $idDateType ?>-select-mois"><?php echo htmlentities('Mois :'); ?></label>
+                    <select id="<?php echo $idDateType ?>-select-mois" required>
+<?php
+                        for($mois = 1; $mois <= 12; ++$mois)
+                        {
+                            $monthName = DateTime::createFromFormat('!m', $mois)->format('F');
+?>
+                        <option value="<?php echo $mois;?>"<?php echo ($mois == date('n'))? "selected" : '';?>><?php echo $monthName; ?></option>
+<?php
+                        }
+?>
+                    </select>
+                    <label for="<?php echo $idDateType ?>-select-year"><?php echo htmlentities('Année :');?></label>
+                    <select id="<?php echo $idDateType ?>-select-year" required>
+<?php
+                        $thisYear = date('Y');
+                        for($year = 0; $year <= 10; ++$year)
+                        {
+                            $optionYear = $thisYear + $year;
+?>
+                        <option value="<?php echo $optionYear;?>" <?php echo ($year == 0)? "selected" : '';?>><?php echo $optionYear; ?></option>
+<?php
+                        }
+?>
+                    </select>
+                <label for="<?php echo $idDateType ?>-select-hour"><?php echo htmlentities('Heure :'); ?></label>
+                <select id="<?php echo $idDateType ?>-select-hour" required>
+<?php
+                 for($hour = 0; $hour < 24; ++$hour)
+                 {
+?>
+                    <option value="<?php echo $hour; ?>" <?php echo ($hour == date('G'))? "selected" : '';?>><?php echo $hour; ?></option>
+<?php
+                 }
+?>
+                </select>
+                <label for="<?php echo $idDateType ?>-select-hour">h</label>
+                <select id="<?php echo $idDateType ?>-select-minutes" required>
+<?php
+                 for($minutes = 0; $minutes < 60; $minutes += 15)
+                 {
+?>
+                    <option value="<?php echo $minutes; ?>"><?php echo $minutes; ?></option>
+<?php
+                 }
+?>
+                </select>
+                <label for="<?php echo $idDateType ?>-select-minutes">min</label>
             <br>
-            <div id="left">Date de fin :</div>
-            <div id="datetimepicker2" class="input-append date">
-                <input type="text" name="dtend" required></input>
-            <span class="add-on">
-                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-            </span>
-        </div>
+<?php
+                }
+?>
         <br>
         <div id="left">Description de l'évènement :</div>
         <textarea name="description" rows="4" cols="50" form="eventForm">
