@@ -34,7 +34,7 @@ function getCategories($db)
 {
     try
     {
-        $request = $db->prepare('SELECT * FROM categorie NATURAL JOIN sous_categorie ORDER BY sous_cat_tab ASC, sous_cat_id ASC');
+        $request = $db->prepare('SELECT cat_id, cat_title FROM categorie NATURAL JOIN sous_categorie ORDER BY sous_cat_tab ASC, sous_cat_id ASC');
         $request->execute();
         $result = $request->fetchAll();
         $request->closeCursor();
