@@ -60,7 +60,7 @@ $db = connect();
 ?>
                 <div id="left"><?php echo htmlentities('Date de '.$dateType.' :');?></div>
                     <label for="<?php echo $idDateType ?>-select-jour"><?php echo htmlentities('Jour :'); ?></label>
-                    <select id="<?php echo $idDateType ?>-select-jour" required>
+                    <select id="<?php echo $idDateType ?>-select-jour" name="<?php echo $idDateType ?>-select-jour" required>
 <?php
                         for($jour = 1; $jour <= 31; ++$jour)
                         {
@@ -71,7 +71,7 @@ $db = connect();
 ?>
                     </select>
                     <label for="<?php echo $idDateType ?>-select-mois"><?php echo htmlentities('Mois :'); ?></label>
-                    <select id="<?php echo $idDateType ?>-select-mois" required>
+                    <select id="<?php echo $idDateType ?>-select-mois" name="<?php echo $idDateType ?>-select-mois" required>
 <?php
                         for($mois = 1; $mois <= 12; ++$mois)
                         {
@@ -83,7 +83,7 @@ $db = connect();
 ?>
                     </select>
                     <label for="<?php echo $idDateType ?>-select-year"><?php echo htmlentities('Année :');?></label>
-                    <select id="<?php echo $idDateType ?>-select-year" required>
+                    <select id="<?php echo $idDateType ?>-select-year" name="<?php echo $idDateType ?>-select-year" required>
 <?php
                         $thisYear = date('Y');
                         for($year = 0; $year <= 10; ++$year)
@@ -96,7 +96,7 @@ $db = connect();
 ?>
                     </select>
                 <label for="<?php echo $idDateType ?>-select-hour"><?php echo htmlentities('Heure :'); ?></label>
-                <select id="<?php echo $idDateType ?>-select-hour" required>
+                <select id="<?php echo $idDateType ?>-select-hour" name="<?php echo $idDateType ?>-select-hour" required>
 <?php
                  for($hour = 0; $hour < 24; ++$hour)
                  {
@@ -107,7 +107,7 @@ $db = connect();
 ?>
                 </select>
                 <label for="<?php echo $idDateType ?>-select-hour">h</label>
-                <select id="<?php echo $idDateType ?>-select-minutes" required>
+                <select id="<?php echo $idDateType ?>-select-minutes" name="<?php echo $idDateType ?>-select-minutes" required>
 <?php
                  for($minutes = 0; $minutes < 60; $minutes += 15)
                  {
