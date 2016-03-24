@@ -42,7 +42,7 @@ $db = connect();
 ?>
                     <div class="categorie_grp">
                         <input type="checkbox" name="categories" id="checkbox-cat-<?php echo $cat[0]; ?>" value="<?php echo $cat[0]; ?>" />
-                        <label for="checkbox-cat-<?php echo $cat[0]; ?>"><?php echo $cat[1]; ?></label>
+                        <label for="checkbox-cat-<?php echo $cat[0]; ?>"><?php echo htmlentities($cat[1]); ?></label>
                     </div>
 <?php
                     }
@@ -65,7 +65,7 @@ $db = connect();
                         for($jour = 1; $jour <= 31; ++$jour)
                         {
 ?>
-                        <option value="<?php echo $jour;?>"<?php echo ($jour == date('j'))? "selected" : '';?>><?php echo $jour; ?></option>
+                        <option value="<?php echo $jour;?>" <?php echo ($jour == date('j'))? "selected" : '';?>><?php echo $jour; ?></option>
 <?php
                         }
 ?>
@@ -77,7 +77,7 @@ $db = connect();
                         {
                             $monthName = DateTime::createFromFormat('!m', $mois)->format('F');
 ?>
-                        <option value="<?php echo $mois;?>"<?php echo ($mois == date('n'))? "selected" : '';?>><?php echo $monthName; ?></option>
+                        <option value="<?php echo $mois;?>" <?php echo ($mois == date('n'))? "selected" : '';?>><?php echo $monthName; ?></option>
 <?php
                         }
 ?>
