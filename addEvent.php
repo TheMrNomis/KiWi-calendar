@@ -105,7 +105,6 @@ else
                     $cats = getCategoriesNames($db);
                     foreach ($cats as $cat)
                     {
-                        //TODO: default checked
 ?>
                     <div class="categorie_grp">
                         <input type="checkbox" name="checkbox-cat-<?php echo $cat[0]; ?>" id="checkbox-cat-<?php echo $cat[0]; ?>" <?php echo (in_array($cat[0], $defaults['categories']))? 'checked' : '';?> />
