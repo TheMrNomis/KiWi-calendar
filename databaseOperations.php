@@ -170,8 +170,9 @@ function getCategoriesForOneEvent($db, $eventId)
         $request->execute(array($eventId));
         $result = $request->fetchAll();
         $request->closeCursor();
-        for($i=0; $i < count($result); $i++) $result[$i] = $result[$i][0];
-        return $result;
+        foreach($result as $oneResult)
+            $categories[] = $oneResult["cat_id"];
+        return $categories;
     }
     catch(PDOException $e)
     {
