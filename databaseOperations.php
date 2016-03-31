@@ -148,7 +148,7 @@ function getOneEvent($db, $id)
 {
     try
     {
-        $request = $db->prepare('SELECT * FROM event WHERE event_id = ?');
+        $request = $db->prepare('SELECT event_id, event_title, event_localisation, event_dtstart, event_dtend, event_description, event_url, event_urlImage, event_contact FROM event WHERE event_id = ?');
         $request->execute(array($id));
         $result = $request->fetch();
         $request->closeCursor();
