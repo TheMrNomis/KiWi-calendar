@@ -201,8 +201,12 @@ else
         <div id="left">Contact :</div>
             <input type="text" name="contact" value="<?php echo $defaults['contact']; ?>" />
         <br>
-        <div id="buttonDiv"><button id="submit">Ajouter l'évènement !</button></div>
+        <!-- //TODO: change submit buttons if edit instead of add -->
+        <input id="submitButton" type="submit" value="Ajouter l'évènement" !/>
         </form>
     </div>
 </body>
+<script type="text/javascript">
+    //TODO: check form before sending
+</script>
 </html>
