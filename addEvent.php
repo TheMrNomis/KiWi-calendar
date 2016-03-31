@@ -44,13 +44,14 @@ else
 
     $id = intval($_GET['id']);
     $event = getOneEvent($db, $id);
+    $categories = getCategoriesForOneEvent($db, $id);
 
     $dtstart = strtotime($event['event_dtstart']);
     $dtend = strtotime($event['event_dtend']);
 
     $defaults = array(
         'titre'=>$event['event_title'],
-        'categories'=>array(),
+        'categories'=>$categories,
         'adresse'=>$event["event_localisation"],
         'debut-jour'=>date('j', $dtstart),
         'debut-mois'=>date('n', $dtstart),
