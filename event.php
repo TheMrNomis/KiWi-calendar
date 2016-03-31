@@ -40,7 +40,7 @@ $dtend = strtotime($event['event_dtend']);
       $obj = json_decode(file_get_contents($url), true);
       $lat = $obj[0]["lat"];
       $lng = $obj[0]["lon"];
-      $urlFrame = 'http://www.openstreetmap.org/export/embed.html?bbox='.$lng.','.$lat.','.$lng.','.$lat.'&layer=mapnik&floor';
+      $urlFrame = 'https://www.openstreetmap.org/export/embed.html?bbox='.$lng.','.$lat.','.$lng.','.$lat.'&layer=mapnik&floor';
       echo '<iframe frameborder="0" scrolling="no"
       marginheight="0" marginwidth="0"
       src="'.$urlFrame.'" style="width:100%;height:500px;margin-bottom:-30px;"></iframe>';
@@ -62,7 +62,7 @@ $dtend = strtotime($event['event_dtend']);
     </div>
 
     <!-- bring in the google maps library -->
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
 
   </body>
   </html>
