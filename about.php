@@ -37,7 +37,7 @@
         <p>Nathalie Molines, professeur d'Innovation et Politique, pour nous avoir donné l’opportunité de concevoir ce projet ainsi que pour nous avoir conseillé tout au long de sa réalisation.<br/>
           Les étudiants du groupe Innovation et Politique, pour nous avoir régulièrement donné leur avis et conseils.<br/>
           <br/>
-          <b>L'équipe Kiwi.</p>
+          <b>L'équipe Kiwi.</b></p>
           </div>
 
           <!-- bring in the google maps library -->
