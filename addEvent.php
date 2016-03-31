@@ -45,8 +45,8 @@ else
     $id = intval($_GET['id']);
     $event = getOneEvent($db, $id);
 
-    $dtstart = $event['dtstart'];
-    $dtend = $event['dtend'];
+    $dtstart = strtotime($event['event_dtstart']);
+    $dtend = strtotime($event['event_dtend']);
 
     $defaults = array(
         'titre'=>$event['event_title'],
@@ -63,7 +63,7 @@ else
         'fin-heure'=>date('G', $dtend),
         'fin-minutes'=>date('i', $dtend),
         'description'=>$event["event_description"],
-        'site'=>$event["event_site"],
+        'site'=>$event["event_url"],
         'image'=>$event["event_urlImage"],
         'contact'=>$event["event_contact"]
     );
