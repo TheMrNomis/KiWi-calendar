@@ -4,7 +4,9 @@ session_start();
 include_once('databaseOperations.php');
 include('datetimeOperations.php');
 $db = connect();
-if(isset($_POST['id']))
+
+$edit = isset($_POST['id']);
+if($edit)
     $id = intval($_POST['id']);
 $titre = htmlentities($_POST['title']);
 $localisation = htmlentities($_POST['address']);
@@ -34,10 +36,12 @@ foreach($availableCategories as $cat)
         $catArray[] = $cat['cat_id'];
 }
 
-if(!isset($_POST['id']))
+if(!$edit)
    addEvent($db, $titre, $catArray, $localisation, $date['debut'], $date['fin'], $description, $url, $urlImage, $contact);
 else
-   updateEvent($db, $id, $titre, $catArray, $localisation, $date['debut'], $date['fin'], $description, $url, $urlImage, $contact);
+{
+    updateEvent($db, $id, $titre, $catArray, $localisation, $date['debut'], $date['fin'], $description, $url, $urlImage, $contact);
+}
 header('Location:./');
 exit;
 ?>
