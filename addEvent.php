@@ -86,7 +86,18 @@ else
         <?php include('header.php'); ?>
 
         <div id="descEvent">
-            <h1><?php echo htmlentities($pageTitle); ?></h1>
+            <h1>
+                <?php echo htmlentities($pageTitle); ?>
+<?php
+                if($edit)
+                {
+?>
+        <a href="deleteEvent.php?id=<?php echo $id; ?>" id="deleteButton"><img src="icons/ic_delete_forever_24px.svg" />
+Supprimer l'évènement !</a>
+<?php
+                }
+?>
+                </h1>
 
             <form id="eventForm" name="eventForm" method="post" action="eventAdded.php">
 <?php
@@ -108,7 +119,7 @@ else
                     {
 ?>
                     <div class="categorie_grp">
-                        <input type="checkbox" name="checkbox-cat-<?php echo $cat[0]; ?>" id="checkbox-cat-<?php echo $cat[0]; ?>" <?php echo (in_array($cat[0], $defaults['categories']))? 'checked' : '';?> />
+                        <input type="checkbox" name="checkbox-cat-<?php echo $cat[0]; ?>" id="checkbox-cat-<?php echo $cat[0]; ?>" <?php echo (is_array($defaults['categories']) && in_array($cat[0], $defaults['categories']))? 'checked' : '';?> />
                         <label for="checkbox-cat-<?php echo $cat[0]; ?>"><?php echo htmlentities($cat[1]); ?></label>
                     </div>
 <?php
@@ -203,7 +214,20 @@ else
             <input type="text" name="contact" value="<?php echo $defaults['contact']; ?>" />
         <br>
         <!-- //TODO: change submit buttons if edit instead of add -->
+<?php
+                if(!$edit)
+                {
+?>
         <input id="submitButton" type="submit" value="Ajouter l'évènement" !/>
+<?php
+                }
+                else
+                {
+?>
+        <input id="submitButton" type="submit" value="Modifier l'évènement !" />
+<?php
+                }
+?>
         </form>
     </div>
 </body>
