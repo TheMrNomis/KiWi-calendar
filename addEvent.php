@@ -119,7 +119,7 @@ Supprimer l'évènement !</a>
                     {
 ?>
                     <div class="categorie_grp">
-                        <input type="checkbox" name="checkbox-cat-<?php echo $cat[0]; ?>" id="checkbox-cat-<?php echo $cat[0]; ?>" <?php echo (is_array($defaults['categories']) && in_array($cat[0], $defaults['categories']))? 'checked' : '';?> />
+                        <input type="checkbox" class="checkbox-cat" name="checkbox-cat-<?php echo $cat[0]; ?>" id="checkbox-cat-<?php echo $cat[0]; ?>" <?php echo (is_array($defaults['categories']) && in_array($cat[0], $defaults['categories']))? 'checked' : '';?> />
                         <label for="checkbox-cat-<?php echo $cat[0]; ?>"><?php echo htmlentities($cat[1]); ?></label>
                     </div>
 <?php
@@ -232,5 +232,22 @@ Supprimer l'évènement !</a>
 </body>
 <script type="text/javascript">
     //TODO: check form before sending
+    function checkCheckboxes()
+    {
+        var checkboxes = document.getElementsByClassName("checkbox-cat");
+        for(var i = 0; i < checkboxes.length; ++i)
+        {
+            console.log(checkboxes[i].name);
+            if(checkboxes[i].checked)
+                return true;
+        }
+
+        return false;
+    }
+
+    document.getElementById('eventForm').addEventListener('submit', function(e) {
+        if(!checkCheckboxes())
+            e.preventDefault();
+                                                          });
 </script>
 </html>
