@@ -92,8 +92,7 @@ else
                 if($edit)
                 {
 ?>
-        <a href="deleteEvent.php?id=<?php echo $id; ?>" id="deleteButton"><img src="icons/ic_delete_forever_24px.svg" />
-Supprimer l'évènement !</a>
+        <a href="deleteEvent.php?id=<?php echo $id; ?>" id="deleteButton" title="Supprimer l'évènement !"><img alt="supprimer" src="icons/ic_delete_forever_24px.svg" /></a>
 <?php
                 }
 ?>
