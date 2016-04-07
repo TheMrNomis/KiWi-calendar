@@ -128,7 +128,7 @@ Supprimer l'évènement !</a>
                 </div>
                 <br>
                 <div id="left">Adresse :</div>
-                <input type="text" name="address" required>
+                <input type="text" name="address" value="<?php echo $defaults['adresse']; ?>" required>
                 <br>
 <?php
                 $dateTypes = array('début', 'fin');
