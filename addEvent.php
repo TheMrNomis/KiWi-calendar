@@ -217,7 +217,7 @@ Supprimer l'évènement !</a>
                 if(!$edit)
                 {
 ?>
-        <input id="submitButton" type="submit" value="Ajouter l'évènement" !/>
+        <input id="submitButton" type="submit" value="Ajouter l'évènement !" />
 <?php
                 }
                 else
