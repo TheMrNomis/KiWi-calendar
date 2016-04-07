@@ -1,12 +1,8 @@
 <?php
-#  if(!isset($_POST["y"]))
-#  {
-#    header("Location:.");
-#    exit;
-#  }
 
 /**
  * @brief connects to the database
+ *
  * @return a PDO connection to the database
  */
 function connect()
@@ -27,8 +23,10 @@ function connect()
 
 /**
  * @brief queries all the categories from the dabase
+ *
  * @param $db: the PDO connection to the database
- * @return al list of all the categories (id, name)
+ *
+ * @return a list of all the categories (id, name)
  */
 function getCategories($db)
 {
@@ -48,6 +46,13 @@ function getCategories($db)
     }
 }
 
+/**
+ * @brief gets the names of each categorie
+ *
+ * @param $db: the PDO connection to the database
+ *
+ * @return an array of [cat_id, cat_title] for each categorie
+ */
 function getCategoriesNames($db)
 {
     try
@@ -69,8 +74,10 @@ function getCategoriesNames($db)
 
 /**
  * @brief queries all the sub categories from a certain tab
+ *
  * @param $db: the PDO connection to the database
  * @param $tab: the ID of the tab
+ *
  * @return a list of the subcategories for $tab
  */
 function getSousCategories($db, $tab)
@@ -93,8 +100,10 @@ function getSousCategories($db, $tab)
 
 /**
  * @brief queries all the categories from a subcategorie
+ *
  * @param $db: the PDO connection to the database
  * @param $sous_cat_id: the ID of the subcategorie
+ *
  * @return a list of the categories for the subcategorie
  */
 function getCategoriesBySousCategorie($db, $sous_cat_id)
@@ -117,7 +126,9 @@ function getCategoriesBySousCategorie($db, $sous_cat_id)
 
 /**
  * @brief queries all the events from the database
+ *
  * @param $db: the PDO connection to the database
+ *
  * @return a list of all the events in the database
  */
 function getAllEvents($db)
@@ -140,8 +151,10 @@ function getAllEvents($db)
 
 /**
  * @brief queries the database for one particular event
+ *
  * @param $db: the PDO connection to the database
  * @param $id: the ID of the event to query
+ *
  * @return an array containing the event
  */
 function getOneEvent($db, $id)
@@ -162,6 +175,14 @@ function getOneEvent($db, $id)
     }
 }
 
+/**
+ * @brief gets the categories associated with one event
+ *
+ * @param $db: the PDO connection to the database
+ * @param $eventId: the ID of the event in the database
+ *
+ * @return an array of cat_id for the event $eventId
+ */
 function getCategoriesForOneEvent($db, $eventId)
 {
     try
@@ -184,8 +205,10 @@ function getCategoriesForOneEvent($db, $eventId)
 
 /**
  * @brief queries the database for the events on a certain date
+ *
  * @param $db: the PDO connection to the database
  * @param $date: the date to search for (please use strtotime)
+ *
  * @return a list of all the events at the date $date
  */
 function getEventsByDate($db, $date)
@@ -209,9 +232,11 @@ function getEventsByDate($db, $date)
 
 /**
  * @brief queries the database for the events on a certain date, where the categories are matched
+ *
  * @param $db: the PDO connection to the database
  * @param $date: the date to search for
  * @param $categories: an array containing the IDs of the categories
+ *
  * @return a list of all the events of the different categories at the date $date
  */
 function getEventsByDateAndCategories($db, $date, $categories)
@@ -245,8 +270,10 @@ function getEventsByDateAndCategories($db, $date, $categories)
 
 /**
  * @brief queries the database for the events after a certain date
+ *
  * @param $db: the PDO connection to the database
  * @param $date: the date to search for
+ *
  * @return a list of all the events future to $date
  */
 function getEventsSince($db,$date)
@@ -269,6 +296,7 @@ function getEventsSince($db,$date)
 
 /**
  * @brief add an event into the database
+ *
  * @param $db: the PDO connection to the database
  * @param $titre: title of the event
  * @param $catArray: an array containing the categories related to this event
@@ -313,6 +341,21 @@ function addEvent($db, $titre, $catArray, $localisation, $dtstart, $dtend, $desc
     }
 }
 
+/**
+ * @brief updates an event in the database
+ *
+ * @param $db: the PDO connection to the database
+ * @param $id: the ID of the event in the database
+ * @param $titre: the new title of the event
+ * @param $catArray: an array containing the new categories of the event
+ * @param $localisation: the address associated with the event
+ * @param $dtstart: a datetime object of the start time of the event
+ * @param $dtend: a datetime object of the end time of the event
+ * @param $description: the description of the event
+ * @param $url: the URL associated with the event
+ * @param $urlImage: the URL of the picture associated with the event
+ * @param $contact: the name of the contact for this event
+ */
 function updateEvent($db, $id, $titre, $catArray, $localisation, $dtstart, $dtend, $description, $url, $urlImage, $contact)
 {
     try
@@ -349,6 +392,12 @@ function updateEvent($db, $id, $titre, $catArray, $localisation, $dtstart, $dten
     }
 }
 
+/**
+ * @brief deletes one event from the database
+ *
+ * @param $db: the PDO connection to the database
+ * @param $id: the ID of the event o be deleted
+ */
 function deleteEvent($db, $id)
 {
     try
