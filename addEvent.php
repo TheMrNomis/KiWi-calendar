@@ -213,7 +213,6 @@ Supprimer l'évènement !</a>
         <div id="left">Contact :</div>
             <input type="text" name="contact" value="<?php echo $defaults['contact']; ?>" />
         <br>
-        <!-- //TODO: change submit buttons if edit instead of add -->
 <?php
                 if(!$edit)
                 {
