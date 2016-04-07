@@ -332,11 +332,10 @@ function updateEvent($db, $id, $titre, $catArray, $localisation, $dtstart, $dten
         $request = $db->prepare('DELETE FROM eventCategorie WHERE event_id=:id');
         $request->execute(array('id'=>$id));
         $request->closeCursor();
-        $newEventId = $db->lastInsertId();
         $request = $db->prepare('INSERT INTO eventCategorie(event_id, cat_id) VALUES(:eventId, :catId)');
         foreach($catArray as $cat)
         {
-            $request->execute(array('eventId'=>$newEventId,
+            $request->execute(array('eventId'=>$id,
                                     'catId'=>$cat));
         }
         $db->commit();
