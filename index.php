@@ -53,7 +53,7 @@ function categoriesOK($session, $categories)
       </div>
     </a>
     <div id="container">
-      <form method="post" id="form-categories" action="./update-categories.php">
+      <form method="post" id="form-categories" action="./updateCategories.php">
         <?php
         for($tab = 0; $tab < 2; ++$tab)
         {
