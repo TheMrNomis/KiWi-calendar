@@ -78,7 +78,7 @@ $weekOffset = 0;
       </form>
       <a id="ancherEvent" href="./addEvent.php">
         <div class="Button" id="AddEvent">
-          + Ajouter un Évènement
+          + Ajouter un &Eacute;v&egrave;nement
         </div>
       </a>
     </div>
