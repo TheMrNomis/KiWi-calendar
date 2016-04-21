@@ -24,6 +24,10 @@
   max-height: 300px;
 }
 
+.bad-checkbox {
+    box-shadow: 0px 0px 5px red;
+}
+
 #buttonDiv {
   width:80%;
   text-align: center;
