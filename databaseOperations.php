@@ -191,6 +191,7 @@ function getCategoriesForOneEvent($db, $eventId)
         $request->execute(array($eventId));
         $result = $request->fetchAll();
         $request->closeCursor();
+        $categories = array();
         foreach($result as $oneResult)
             $categories[] = $oneResult["cat_id"];
         return $categories;
