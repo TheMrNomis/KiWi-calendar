@@ -16,7 +16,7 @@ $daysFull = array(
     4 => "Jeudi",
     5 => "Vendredi",
     6 => "Samedi",
-    7 => "Dimamche"
+    7 => "Dimanche"
 );
 
 $months = array(
@@ -44,7 +44,7 @@ $months = array(
 function printableHour($datetime)
 {
     $hour = date('G', $datetime);
-    $minutes = date('I', $datetime);
+    $minutes = date('i', $datetime);
 
     $ret = $hour.'h';
     if($minutes != '00')
