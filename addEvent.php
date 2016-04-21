@@ -11,8 +11,6 @@ include_once('databaseOperations.php');
 include('datetimeOperations.php');
 $db = connect();
 
-//TODO: js at least check one categorie to submit form
-
 $edit = (isset($_GET['id']) && is_numeric($_GET['id']));
 
 if(!$edit)
@@ -230,7 +228,6 @@ else
     </div>
 </body>
 <script type="text/javascript">
-    //TODO: check form before sending
     function checkCheckboxes()
     {
         var checkboxes = document.getElementsByClassName("checkbox-cat");
