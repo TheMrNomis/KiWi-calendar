@@ -36,3 +36,9 @@ h1 img
   margin-right:100px;
   margin-bottom:-100px;
 }
+
+iframe {
+    background-image: url("images/OSM.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
