@@ -45,22 +45,53 @@ $dtend = strtotime($event['event_dtend']);
       $lng = $obj[0]["lon"];
       $urlFrame = 'https://www.openstreetmap.org/export/embed.html?bbox='.$lng.','.$lat.','.$lng.','.$lat.'&layer=mapnik&floor&marker='.$lat.','.$lng;
 ?>
-      <iframe id="map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="<?php echo $urlFrame; ?>"></iframe>;
+      <iframe id="map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="<?php echo $urlFrame; ?>"></iframe>
 <?php
-      if(isset($event["event_urlImage"]) || isset($event["event_description"]))
-      echo '<div id="descDiv" style="margin-top:30px;"><h2>Description</h2></div>';
-      if(isset($event["event_urlImage"]))
-      echo '<div id="image"><img src="'.$event["event_urlImage"].'" width="100%"></div>';
-      if(isset($event["event_description"]))
-      echo '<div id="description">'.$event["event_description"].'</div>';
-
-      if(isset($event["event_site"]) || isset($event["event_contact"]))
-      echo '<h2>Informations</h2>';
-      if(isset($event["event_site"]))
-      echo '<div id="URL">URL : <a href="'.$event["event_site"].'">'.$event["event_site"].'</a></div>';
-      if(isset($event["event_contact"]))
-      echo '<div id="Contact">Contact : <a href="mailto:'.$event["event_contact"].'">'.$event["event_contact"].'</a></div>';
-  ?>
+      if(!empty($event["event_urlImage"]) || !empty($event['event_description']) || !empty($event['event_site']) || !empty($event['event_contact']))
+      {
+?>
+      <h2>Description</h2>
+<?php
+      }
+      if(!empty($event["event_urlImage"]))
+      {
+?>
+      <div id="image">
+          <img src="<?php echo $event["event_urlImage"];?>" width="100%">
+      </div>
+<?php
+      }
+      if(!empty($event['event_description']))
+      {
+?>
+      <div id="description">
+          <?php echo $event["event_description"]; ?>
+      </div>
+<?php
+      }
+      if(!empty($event['event_site']) || !empty($event['event_contact']))
+      {
+?>
+      <h2>Informations</h2>
+<?php
+      }
+      if(!empty($event['event_site']) && preg_match("#^(https?://)?[a-zA-Z0-9.]{1,}\.[a-zA-Z0-9.]{1,}/?#", $event['event_site']))
+      {
+?>
+      <div id="URL">
+          URL : <a href="<?php echo $event["event_site"];?>"><?php echo $event["event_site"];?></a>
+      </div>
+<?php
+      }
+      if(!empty($event['event_contact']))
+      {
+?>
+      <div id="Contact">
+          Contact : <a href="mailto:'<?php echo $event["event_contact"];?>"><?php echo $event["event_contact"]; ?></a>
+      </div>
+<?php
+      }
+?>
     </div>
 
   </body>
