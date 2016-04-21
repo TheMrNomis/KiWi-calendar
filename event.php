@@ -34,10 +34,9 @@ $dtend = strtotime($event['event_dtend']);
 
 
       <h2>Date et lieu</h2>
-      <div id="dateheure">
-        <?php echo htmlentities(printableDateTime($dtstart, $dtend)); ?>
-      </div>
-      <div id="lieu"><?php echo $event['event_localisation']; ?></div>
+      <p>
+          <b><?php echo $event['event_localisation']; ?></b> - <?php echo htmlentities(printableDateTime($dtstart, $dtend)); ?>
+      </p>
 <?php
       $url = 'https://nominatim.openstreetmap.org/search?format=json&q='.urlencode($event["event_localisation"]);
       $obj = json_decode(file_get_contents($url), true);
