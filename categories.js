@@ -8,6 +8,10 @@ for(var i = 0; i < categories.length; ++i)
         'use strict';
         var cat_id = event.target.id.replace('cat_','');
 
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "updateCategories.php?id="+cat_id+"&val="+event.target.checked);
+        xhr.send(null);
+
         var events = document.getElementsByClassName('event_in_cat_'+cat_id);
 
         for(var i = 0; i < events.length; ++i)
