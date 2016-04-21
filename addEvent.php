@@ -27,10 +27,10 @@ if(!$edit)
         'debut-annee'=>date('Y'),
         'debut-heure'=>date('G'),
         'debut-minutes'=>'0',
-        'fin-jour'=>date('j'),
-        'fin-mois'=>date('n'),
-        'fin-annee'=>date('Y'),
-        'fin-heure'=>date('G'),
+        'fin-jour'=>date('j', strtotime('+1 hour')),
+        'fin-mois'=>date('n', strtotime('+1 hour')),
+        'fin-annee'=>date('Y', strtotime('+1 hour')),
+        'fin-heure'=>date('G', strtotime('+1 hour')),
         'fin-minutes'=>'0',
         'description'=>'',
         'site'=>'',
@@ -246,7 +246,14 @@ else
 
     document.getElementById('eventForm').addEventListener('submit', function(e) {
         if(!checkCheckboxes())
+        {
             e.preventDefault();
+            var checkboxes = document.getElementsByClassName("checkbox-cat");
+            for(var i = 0; i < checkboxes.length; ++i)
+            {
+                checkboxes[i].className += " bad-checkbox";
+            }
+        }
                                                           });
 </script>
 </html>
