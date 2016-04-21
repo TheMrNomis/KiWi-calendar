@@ -12,6 +12,16 @@ $weekOffset = $_GET['w'];
 else
 $weekOffset = 0;
 
+function categoriesOK($session, $categories)
+{
+    foreach($session as $cat=>$cat_status)
+    {
+        if($cat_status && in_array($cat, $categories))
+            return true;
+    }
+    return false;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -100,7 +110,7 @@ $weekOffset = 0;
       $date = strtotime('+1 day', $date)
       )
       {
-        $events = getEventsByDateAndCategories($db, $date, $_SESSION['categorieStatus']);
+        $events = getEventsByDate($db, $date);
 
         $class = '';
         if(date('m', $date) != date('m', $monthDate))
@@ -116,14 +126,21 @@ $weekOffset = 0;
         <span class="minititle left">'.$days[date("N",$date)].'</span>
         '.date("d", $date));
         if(date('m', $date) != date('m', $monthDate))
-        echo('<span class="minititle right">/'.date("m",$date).'</span>');
+            echo('<span class="minititle right">/'.date("m",$date).'</span>');
         echo('
         </h2>
         </a>
         <ul>');
 
         foreach($events as $event)
-        echo('<li class="calendar-link"><a href="./event.php?id='.$event['event_id'].'">'.$event['event_title']."</a></li>");
+        {
+            $categories = getCategoriesForOneEvent($db, $event['event_id']);
+            $classes = implode(' ', array_map(function($e){return "event_in_cat_".$e;}, $categories));
+
+            if(!categoriesOK($_SESSION['categorieStatus'], $categories))
+                $classes .= ' bad_cat';
+            echo('<li class="calendar-link '. $classes .'"><a href="./event.php?id='.$event['event_id'].'">'.$event['event_title']."</a></li>");
+        }
         echo('
         </ul>
         </li>');
