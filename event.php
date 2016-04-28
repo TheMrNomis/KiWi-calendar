@@ -30,7 +30,7 @@ $dtend = strtotime($event['event_dtend']);
   <?php include('header.php'); ?>
   <div id="descEvent">
     <h1><?php echo $event["event_title"]; ?>
-      <a href="<?php echo 'addEvent.php?id='.$_GET['id']; ?>"><img src="icons/ic_mode_edit_24px.svg"/></a></h1>
+      <a href="<?php echo 'addEvent.php?id='.$_GET['id']; ?>"><img src="icons/ic_mode_edit_24px.svg" alt="edit icon" /></a></h1>
 
 
       <h2>Date et lieu</h2>
@@ -44,7 +44,7 @@ $dtend = strtotime($event['event_dtend']);
       $lng = $obj[0]["lon"];
       $urlFrame = 'https://www.openstreetmap.org/export/embed.html?bbox='.$lng.','.$lat.','.$lng.','.$lat.'&layer=mapnik&floor&marker='.$lat.','.$lng;
 ?>
-      <iframe id="map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="<?php echo $urlFrame; ?>"></iframe>
+      <iframe id="map" src="<?php echo $urlFrame; ?>"></iframe>
 <?php
       if(!empty($event["event_urlImage"]) || !empty($event['event_description']) || !empty($event['event_site']) || !empty($event['event_contact']))
       {
@@ -56,7 +56,7 @@ $dtend = strtotime($event['event_dtend']);
       {
 ?>
       <div id="image">
-          <img src="<?php echo $event["event_urlImage"];?>" width="100%">
+          <img src="<?php echo $event["event_urlImage"];?>" alt="image Evenement" />
       </div>
 <?php
       }

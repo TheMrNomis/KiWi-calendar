@@ -43,4 +43,11 @@ h1 img
     background-image: url("images/OSM.svg");
     background-repeat: no-repeat;
     background-position: center;
+    border: 0px;
+    overflow: hidden;
+    margin:0;
+}
+
+#image img {
+    width: 100%;
 }
