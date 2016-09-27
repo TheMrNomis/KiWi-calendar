@@ -5,9 +5,12 @@
 3. [Qui ?](#qui-)
 5. [Licence](#licence)
 
+## La beta
+Accès public à la beta : [https://isati-esir.asso.univ-rennes1.fr/calendar/beta](https://isati-esir.asso.univ-rennes1.fr/calendar/beta)
+
 ## Le projet
 
-L'ESIR et les Esiriens participent à de nombreux évènements. De plus, la ville de Rennes est très active et propose chaque semaine des évènements dans de nombreux domaines. Pour le moment, ces évènements sont enregistrés dans des calendriers distincts, ou envoyés par mail, ou dans des groupes privés (par exemple, pour les clubs de l’ESIR, il faut soit s’adresser à une personne du club, soit utiliser un outil externe).  
+L'ESIR et les Esiriens participent à de nombreux évènements. De plus, la ville de Rennes est très active et propose chaque semaine des évènements dans de nombreux domaines. Pour le moment, ces évènements sont enregistrés dans des calendriers distincts, ou envoyés par mail, ou dans des groupes privés (par exemple, pour les clubs de l’ESIR, il faut soit s’adresser à une personne du club, soit utiliser un outil externe).
 L’idée est donc de proposer un calendrier semi-collaboratif disponible en ligne regroupant des évènements intéressants :
 
 - De base, les évènements internes à l’école ainsi que ceux du BDE (soirées, réunions des clubs, etc) seront synchronisés. De plus, de nombreux évènements rennais seront synchronisés (Diapason, Concerts, opéras, théatres, cinéma, etc.)
