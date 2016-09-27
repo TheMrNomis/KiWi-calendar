@@ -202,6 +202,24 @@ input[type="checkbox"]:checked + label span {
   justify-content: center;
 }
 
+@media all and (max-width: 1400px) and (min-width: 1100px){
+    #calendar .week {
+        width: 1100px;
+        position:relative;
+        left: 50%;
+        margin-left: -550px;
+    }
+}
+
+@media all and (max-width: 1100px) and (min-width: 900px){
+    #calendar .week {
+        width: 900px;
+        position:relative;
+        left: 50%;
+        margin-left: -450px;
+    }
+}
+
 #calendar .week .day {
   padding: 5px;
   width: 200px;
